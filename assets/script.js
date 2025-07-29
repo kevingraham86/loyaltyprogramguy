@@ -1,6 +1,0 @@
-
-function toggleMenu(){
-  const m = document.getElementById('mobileMenu');
-  if(!m) return;
-  m.style.display = m.style.display === 'block' ? 'none' : 'block';
-}
