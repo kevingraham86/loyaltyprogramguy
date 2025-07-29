@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://loyaltyprogramguy.com/sitemap.xml
