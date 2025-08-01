@@ -1,0 +1,35 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #333;
+}
+header {
+  background: #0047AB;
+  color: #fff;
+  text-align: center;
+  padding: 2em;
+}
+.logo {
+  max-width: 150px;
+}
+.cta {
+  display: inline-block;
+  background: #FFA500;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  margin-top: 1em;
+  border-radius: 5px;
+}
+section {
+  padding: 2em;
+}
+footer {
+  background: #eee;
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9em;
+}
