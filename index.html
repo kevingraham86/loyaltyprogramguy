@@ -1,253 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Loyalty Program Guy | SMS Loyalty Programs for Local Businesses</title>
-  <meta name="description" content="Launch a high‑ROI SMS loyalty program with Sentext. We help restaurants, salons, gyms, and retailers in Southern California grow repeat visits and revenue—fast." />
-  <meta name="keywords" content="loyalty program, SMS marketing, text marketing, Sentext, customer loyalty, small business, San Diego, Poway" />
-  <meta name="author" content="Kevin Graham - SMB AI Partners" />
-
-  <!-- OpenGraph / Social -->
-  <meta property="og:title" content="Loyalty Program Guy — SMS Loyalty Programs for Small Business" />
-  <meta property="og:description" content="Grow your local business with automated text loyalty powered by Sentext. Get more repeat customers and increase revenue." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://loyaltyprogramguy.com/" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=1200&auto=format&fit=crop" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Tailwind CSS & Fonts -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    .brand-gradient {
-      background: linear-gradient(to right, #1e3a8a, #2563eb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  </style>
-
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJWH20NHY5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-YJWH20NHY5');
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loyalty Program Guy</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <!-- Sticky Header -->
-  <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
-    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-      <a href="#top" class="flex items-center space-x-2">
-        <!-- SVG Logo for Sentext -->
-        <svg class="h-8 w-auto" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="45" r="7" fill="#34D399"/><circle cx="110" cy="45" r="7" fill="#FBBF24"/><circle cx="130" cy="45" r="7" fill="#60A5FA"/><path d="M25.6 10H40.4L30.8 25.6L40.4 41.2H25.6L16 25.6L25.6 10Z" fill="#4B5563"/><path d="M46 10H60V41.2H46V10Z" fill="#4B5563"/><path d="M65.2 10H79.2V22.4H70V14.8H65.2V41.2H51.2V28.8H60V41.2H65.2V10Z" fill="#4B5563"/><path d="M84.4 10H98.4V41.2H84.4V10Z" fill="#4B5563"/><path d="M103.6 10H117.6L124.4 25.6L131.2 10H145.2L131.2 41.2H117.6L103.6 10Z" fill="#4B5563"/><path d="M150.8 10H164.8V22.4H155.6V14.8H150.8V41.2H136.8V28.8H145.6V41.2H150.8V10Z" fill="#4B5563"/></svg>
-        <span class="text-xl font-bold text-gray-700 tracking-tight">LoyaltyProgramGuy</span>
-      </a>
-      <nav class="hidden md:flex items-center space-x-6">
-        <a href="#what" class="text-gray-600 hover:text-blue-600 transition">What We Do</a>
-        <a href="#why" class="text-gray-600 hover:text-blue-600 transition">Why Text Loyalty</a>
-        <a href="#how" class="text-gray-600 hover:text-blue-600 transition">How It Works</a>
-        <a href="#faqs" class="text-gray-600 hover:text-blue-600 transition">FAQs</a>
-        <a href="#schedule" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition shadow-sm">Schedule a Demo</a>
-      </nav>
-      <!-- Mobile Menu Button can be added here if needed -->
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Grow Customer Loyalty with Text Marketing</h1>
+      <p>Helping local businesses boost repeat sales with Sentext’s powerful SMS loyalty programs.</p>
+      <a href="https://calendly.com/smbaipartners" class="cta-button">Book a Consultation</a>
     </div>
-  </header>
+    <div class="hero-image">
+      <img src="images/hero.png" alt="Business owner using phone for SMS marketing">
+    </div>
+  </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="top" class="relative bg-white pt-16 pb-20 md:pt-24 md:pb-28">
-      <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        <div class="text-center md:text-left">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
-            Unlock More Revenue with <span class="brand-gradient">SMS Loyalty Programs</span>
-          </h1>
-          <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-xl mx-auto md:mx-0">
-            Grow your local business with automated text marketing powered by Sentext. We help you turn first-time visitors into loyal regulars, fast.
-          </p>
-          <div class="mt-8 flex justify-center md:justify-start">
-            <a class="bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg text-lg hover:bg-blue-700 transition shadow-lg transform hover:scale-105" href="https://calendly.com/smbaipartners">Schedule a Free Consultation</a>
-          </div>
-        </div>
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1471&auto=format&fit=crop" alt="A group of small business owners collaborating on a marketing plan using a phone and tablet." class="rounded-2xl shadow-2xl" />
-        </div>
-      </div>
-    </section>
+  <!-- What We Do Section -->
+  <section class="what-we-do">
+    <h2>What We Do</h2>
+    <p>We empower local businesses to engage customers instantly through targeted text campaigns and automated loyalty programs.</p>
+    <img src="images/what-we-do.png" alt="Illustration of retail, restaurant, and service-based businesses">
+  </section>
 
-    <!-- What We Do Section -->
-    <section id="what" class="py-20 md:py-28 bg-gray-50">
-      <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Your "Done-For-You" Customer Loyalty Partner</h2>
-          <p class="mt-4 text-lg text-gray-600">We set up and manage high-ROI SMS loyalty programs that drive repeat visits and increase average customer spend. Ideal for:</p>
-          <ul class="mt-6 space-y-4">
-            <li class="flex items-start">
-              <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              <span class="text-gray-700"><strong>Restaurants & Cafés:</strong> Fill tables on slow nights and promote daily specials.</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              <span class="text-gray-700"><strong>Salons & Spas:</strong> Book last-minute openings and reward your best clients.</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              <span class="text-gray-700"><strong>Gyms & Studios:</strong> Announce new classes and boost membership renewals.</span>
-            </li>
-             <li class="flex items-start">
-              <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              <span class="text-gray-700"><strong>Retail Shops:</strong> Drive foot traffic with exclusive flash sales and events.</span>
-            </li>
-          </ul>
-        </div>
-        <div class="art">
-          <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1374&auto=format&fit=crop" alt="A diverse group of happy small business owners in their respective shops: a barista, a stylist, and a retail owner." class="rounded-2xl shadow-xl" />
-        </div>
-      </div>
-    </section>
+  <!-- Why Text Loyalty Section -->
+  <section class="why-text-loyalty">
+    <h2>Why Text Loyalty Works</h2>
+    <ul>
+      <li>98% of texts are read within 3 minutes</li>
+      <li>Increase repeat sales by up to 30%</li>
+      <li>Automate your customer outreach</li>
+    </ul>
+    <img src="images/why-text-loyalty.png" alt="Illustration showing benefits of text marketing">
+  </section>
 
-    <!-- Why Text Loyalty Section -->
-    <section id="why" class="py-20 md:py-28 bg-white">
-      <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div class="art md:order-2">
-          <img src="https://images.unsplash.com/photo-1611162617213-6d22e4f1336e?q=80&w=1374&auto=format&fit=crop" alt="A smartphone displaying text message notifications with high engagement icons." class="rounded-2xl shadow-xl" />
-        </div>
-        <div class="md:order-1">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Why SMS is the Ultimate Marketing Channel</h2>
-          <p class="mt-4 text-lg text-gray-600">Email gets ignored. Social media is crowded. Text messages get read. It's the most direct and effective way to reach your local customers.</p>
-          <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-            <div class="bg-gray-50 p-6 rounded-lg">
-              <span class="text-5xl font-extrabold text-blue-600">98%</span>
-              <p class="mt-2 font-semibold text-gray-700">Open Rate</p>
-            </div>
-            <div class="bg-gray-50 p-6 rounded-lg">
-              <span class="text-5xl font-extrabold text-blue-600">30%+</span>
-              <p class="mt-2 font-semibold text-gray-700">Click-Through Rate</p>
-            </div>
-            <div class="bg-gray-50 p-6 rounded-lg">
-              <span class="text-5xl font-extrabold text-blue-600">Days</span>
-              <p class="mt-2 font-semibold text-gray-700">to see ROI, not months</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <img src="images/how-it-works.png" alt="Visual flow of how the SMS loyalty program works">
+  </section>
 
-    <!-- How It Works Section -->
-    <section id="how" class="py-20 md:py-28 bg-gray-50">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Simple 4-Step Process</h2>
-        <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">We handle all the tech so you can focus on running your business.</p>
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
-          <!-- Step 1 -->
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex items-center">
-              <div class="bg-blue-100 text-blue-600 font-bold rounded-full w-10 h-10 flex items-center justify-center text-xl mr-4">1</div>
-              <h3 class="text-xl font-semibold">Consultation</h3>
-            </div>
-            <p class="mt-3 text-gray-600">We learn about your business, customers, and goals to build a winning strategy.</p>
-          </div>
-          <!-- Step 2 -->
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex items-center">
-              <div class="bg-blue-100 text-blue-600 font-bold rounded-full w-10 h-10 flex items-center justify-center text-xl mr-4">2</div>
-              <h3 class="text-xl font-semibold">Program Setup</h3>
-            </div>
-            <p class="mt-3 text-gray-600">We configure your dedicated kiosk, keywords, and automated campaigns.</p>
-          </div>
-          <!-- Step 3 -->
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex items-center">
-              <div class="bg-blue-100 text-blue-600 font-bold rounded-full w-10 h-10 flex items-center justify-center text-xl mr-4">3</div>
-              <h3 class="text-xl font-semibold">Launch & Train</h3>
-            </div>
-            <p class="mt-3 text-gray-600">We launch your program and provide simple training for you and your staff.</p>
-          </div>
-          <!-- Step 4 -->
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex items-center">
-              <div class="bg-blue-100 text-blue-600 font-bold rounded-full w-10 h-10 flex items-center justify-center text-xl mr-4">4</div>
-              <h3 class="text-xl font-semibold">Optimize & Report</h3>
-            </div>
-            <p class="mt-3 text-gray-600">We monitor performance, optimize campaigns, and send you clear reports on your ROI.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQs Section -->
-    <section id="faqs" class="py-20 md:py-28 bg-white">
-      <div class="container mx-auto px-6 max-w-3xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center">Frequently Asked Questions</h2>
-        <div class="mt-10 space-y-4">
-          <details class="bg-gray-50 p-6 rounded-lg group">
-            <summary class="font-semibold cursor-pointer flex justify-between items-center">
-              How much does it cost?
-              <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </summary>
-            <p class="mt-3 text-gray-600">We tailor plans to each business. Most clients see a positive ROI within the first month — not having a loyalty program may already be costing you more.</p>
-          </details>
-          <details class="bg-gray-50 p-6 rounded-lg group">
-            <summary class="font-semibold cursor-pointer flex justify-between items-center">
-              Is there a long-term contract?
-              <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </summary>
-            <p class="mt-3 text-gray-600">Yes, Sentext uses a standard agreement so we have the time to fully implement, test, and optimize your program for maximum results. We're invested in your long-term success.</p>
-          </details>
-          <details class="bg-gray-50 p-6 rounded-lg group">
-            <summary class="font-semibold cursor-pointer flex justify-between items-center">
-              What kind of businesses do you work with?
-              <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </summary>
-            <p class="mt-3 text-gray-600">Our programs are perfect for any local business that relies on repeat customers. We have proven success with restaurants, cafés, salons, spas, fitness studios, and retail shops.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section id="schedule" class="py-20 md:py-28 bg-gray-50">
-      <div class="container mx-auto px-6">
-        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl grid md:grid-cols-2 gap-12 items-center">
-          <div class="text-center md:text-left">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Ready to See It in Action?</h2>
-            <p class="mt-4 text-lg text-gray-600">Schedule a free, no-obligation 15-minute demo. I'll show you exactly how a text-based loyalty program can start generating returns for your business in days.</p>
-            <div class="mt-8">
-              <a class="bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg text-lg hover:bg-blue-700 transition shadow-lg transform hover:scale-105 inline-block" href="https://calendly.com/smbaipartners">Book Your Free Demo</a>
-            </div>
-          </div>
-          <div class="calendly-embed h-96 md:h-auto md:min-h-[520px] rounded-lg overflow-hidden">
-            <iframe src="https://calendly.com/smbaipartners?hide_gdpr_banner=1"
-              width="100%" height="100%" frameborder="0" class="min-h-[520px]"></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- FAQ Section -->
+  <section class="faq">
+    <h2>FAQs</h2>
+    <div class="faq-item">
+      <h3>How quickly can I get started?</h3>
+      <p>Most businesses are up and running within 48 hours.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need special equipment?</h3>
+      <p>No — all you need is a phone or computer.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is there a contract?</h3>
+      <p>We offer flexible plans to fit your business needs.</p>
+    </div>
+    <img src="images/faq.png" alt="Customer support illustration">
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white">
-    <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center">
-      <div class="text-center md:text-left">
-        <p class="font-semibold">Loyalty Program Guy | SMB AI Partners</p>
-        <p class="text-sm text-gray-400 mt-1">© 2025 · Serving San Diego, CA & Beyond</p>
-      </div>
-      <nav class="flex space-x-6 mt-4 md:mt-0">
-        <a href="#what" class="text-gray-300 hover:text-white transition">What We Do</a>
-        <a href="#why" class="text-gray-300 hover:text-white transition">Why Text</a>
-        <a href="#how" class="text-gray-300 hover:text-white transition">How It Works</a>
-      </nav>
-    </div>
+  <footer>
+    <p>&copy; 2025 Loyalty Program Guy. All rights reserved.</p>
   </footer>
 
 </body>
