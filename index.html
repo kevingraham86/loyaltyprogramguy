@@ -25,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Tailwind CSS & Fonts -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/site.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -139,7 +139,7 @@
   <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
     <div class="container mx-auto px-6 py-3 flex justify-between items-center">
       <a href="#top" class="flex items-center space-x-3">
-        <img src="images/smb-ai-partners-logo-header.png" alt="SMB AI Partners logo" class="h-10 w-auto">
+        <img src="images/smb-ai-partners-logo-header.png" width="380" height="250" alt="SMB AI Partners logo" class="h-10 w-auto">
         <span class="text-xl font-bold text-gray-800 tracking-tight">Loyalty Program Guy</span>
       </a>
       <nav class="hidden md:flex items-center space-x-6">
@@ -150,7 +150,21 @@
         <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
         <a href="#schedule" id="cta-nav-schedule" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition shadow-sm">Schedule a Demo</a>
       </nav>
+      <button id="menu-toggle" type="button" class="md:hidden p-3 -mr-3 text-gray-700 hover:text-blue-600" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
     </div>
+    <nav id="mobile-menu" class="md:hidden hidden border-t border-gray-200 bg-white">
+      <div class="container mx-auto px-6 py-2 flex flex-col">
+        <a href="#features" class="py-3 text-gray-700 hover:text-blue-600">Features</a>
+        <a href="#who" class="py-3 text-gray-700 hover:text-blue-600">Who We Help</a>
+        <a href="#how" class="py-3 text-gray-700 hover:text-blue-600">How It Works</a>
+        <a href="#guarantee" class="py-3 text-gray-700 hover:text-blue-600">Our Guarantee</a>
+        <a href="#faqs" class="py-3 text-gray-700 hover:text-blue-600">FAQs</a>
+        <a href="#about" class="py-3 text-gray-700 hover:text-blue-600">About</a>
+        <a href="#schedule" id="cta-mobile-menu-schedule" class="my-3 bg-blue-600 text-white text-center font-semibold py-3 rounded-lg hover:bg-blue-700">Schedule a Demo</a>
+      </div>
+    </nav>
   </header>
 
   <main>
@@ -169,7 +183,7 @@
           </div>
         </div>
         <div class="relative">
-          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1470&auto=format&fit=crop" alt="A bustling, modern restaurant with happy customers." class="rounded-2xl shadow-2xl" />
+          <img srcset="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=75&w=640&auto=format&fit=crop 640w, https://images.unsplash.com/photo-1552566626-52f8b828add9?q=75&w=960&auto=format&fit=crop 960w, https://images.unsplash.com/photo-1552566626-52f8b828add9?q=75&w=1470&auto=format&fit=crop 1470w" sizes="(min-width: 768px) 50vw, 100vw" width="1470" height="980" fetchpriority="high" src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1470&auto=format&fit=crop" alt="A bustling, modern restaurant with happy customers." class="rounded-2xl shadow-2xl" />
         </div>
       </div>
     </section>
@@ -278,7 +292,7 @@
                 <!-- Restaurants Content -->
                 <div id="restaurants-content" class="tab-content active">
                     <div class="grid md:grid-cols-2 gap-12 items-center bg-gray-50 p-8 rounded-2xl shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1470&auto=format&fit=crop" alt="Interior of a stylish cafe." class="rounded-xl object-cover h-full w-full">
+                        <img srcset="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=75&w=640&auto=format&fit=crop 640w, https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=75&w=960&auto=format&fit=crop 960w, https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=75&w=1470&auto=format&fit=crop 1470w" sizes="(min-width: 768px) 50vw, 100vw" width="1470" height="980" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1470&auto=format&fit=crop" alt="Interior of a stylish cafe." class="rounded-xl object-cover h-full w-full">
                         <div>
                             <h3 class="text-2xl font-bold text-gray-900">Fill Tables & Boost Orders</h3>
                             <p class="mt-2 text-gray-600">Turn slow nights into busy ones and keep your customers coming back for their favorite dish.</p>
@@ -294,7 +308,7 @@
                 <!-- Retail Content -->
                 <div id="retail-content" class="tab-content">
                     <div class="grid md:grid-cols-2 gap-12 items-center bg-gray-50 p-8 rounded-2xl shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=1470&auto=format&fit=crop" alt="Interior of a modern clothing retail store." class="rounded-xl object-cover h-full w-full">
+                        <img srcset="https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=75&w=640&auto=format&fit=crop 640w, https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=75&w=960&auto=format&fit=crop 960w, https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=75&w=1470&auto=format&fit=crop 1470w" sizes="(min-width: 768px) 50vw, 100vw" width="1470" height="980" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=1470&auto=format&fit=crop" alt="Interior of a modern clothing retail store." class="rounded-xl object-cover h-full w-full">
                         <div>
                             <h3 class="text-2xl font-bold text-gray-900">Drive Foot Traffic & Clear Inventory</h3>
                             <p class="mt-2 text-gray-600">Connect with your shoppers directly and give them a reason to choose your store over online giants.</p>
@@ -310,7 +324,7 @@
                 <!-- Salons Content -->
                 <div id="salons-content" class="tab-content">
                     <div class="grid md:grid-cols-2 gap-12 items-center bg-gray-50 p-8 rounded-2xl shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1470&auto=format&fit=crop" alt="A clean and modern salon interior." class="rounded-xl object-cover h-full w-full">
+                        <img srcset="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=75&w=640&auto=format&fit=crop 640w, https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=75&w=960&auto=format&fit=crop 960w, https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=75&w=1470&auto=format&fit=crop 1470w" sizes="(min-width: 768px) 50vw, 100vw" width="1470" height="980" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1470&auto=format&fit=crop" alt="A clean and modern salon interior." class="rounded-xl object-cover h-full w-full">
                         <div>
                             <h3 class="text-2xl font-bold text-gray-900">Fill Your Calendar & Increase Bookings</h3>
                             <p class="mt-2 text-gray-600">Keep your chairs full and your clients feeling valued with timely, personal text messages.</p>
@@ -377,7 +391,7 @@
         <p class="mt-4 text-blue-300 font-semibold uppercase tracking-wide text-sm">The SMB AI Partners Guarantee</p>
         <h2 class="mt-2 text-3xl md:text-4xl font-bold">3x ROI in 12 Months, or We Work for Free Until You Get There</h2>
         <p class="mt-4 text-lg text-blue-100">If, after 12 full months of service, your business hasn't achieved a 3x return on your investment with us, we'll keep providing our full monthly services at no charge until that milestone is reached. We only win when you win.</p>
-        <p class="mt-3 text-sm text-blue-300">*Terms apply. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" class="underline hover:text-white">See full guarantee terms</a>.</p>
+        <p class="mt-3 text-sm text-blue-300">*Terms apply. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" class="inline-block py-3 underline hover:text-white">See full guarantee terms</a>.</p>
         <a href="#schedule" id="cta-guarantee" class="mt-8 inline-block bg-white text-blue-900 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition shadow-lg">Book Your Free Demo</a>
       </div>
     </section>
@@ -388,28 +402,28 @@
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center">Your Questions, Answered</h2>
         <div class="mt-10 space-y-4">
           <details class="bg-white p-6 rounded-lg group shadow-sm">
-            <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            <summary class="font-semibold cursor-pointer flex justify-between items-center gap-4 min-h-[44px]">
               How much does this cost?
               <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </summary>
             <p class="mt-3 text-gray-600">Plans are tailored to your business size and needs, but they are designed to be affordable for small businesses. Most of our clients see a positive return on their investment within the first 30 days. The real question is: how much money are you losing by not having a system to bring customers back?</p>
           </details>
           <details class="bg-white p-6 rounded-lg group shadow-sm">
-            <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            <summary class="font-semibold cursor-pointer flex justify-between items-center gap-4 min-h-[44px]">
               Will my customers think this is spam?
               <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </summary>
             <p class="mt-3 text-gray-600">Not at all. This is a 100% opt-in program. Customers willingly give you their number in your store to receive offers and rewards they actually want. Because they've opted in and the messages provide real value (discounts, special offers), open rates are incredibly high.</p>
           </details>
           <details class="bg-white p-6 rounded-lg group shadow-sm">
-            <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            <summary class="font-semibold cursor-pointer flex justify-between items-center gap-4 min-h-[44px]">
               How much of my time will this take to manage?
               <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </summary>
             <p class="mt-3 text-gray-600">Almost none. That's the beauty of our "done-for-you" service. We handle the entire setup and strategy. Once launched, the 7 automated campaigns run on their own. Your only job is to tell your customers about the program. We handle the rest.</p>
           </details>
           <details class="bg-white p-6 rounded-lg group shadow-sm">
-            <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            <summary class="font-semibold cursor-pointer flex justify-between items-center gap-4 min-h-[44px]">
               Is there a long-term contract?
               <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </summary>
@@ -431,7 +445,7 @@
             </div>
           </div>
           <div class="calendly-embed h-96 md:h-auto md:min-h-[520px] rounded-lg overflow-hidden border">
-            <iframe src="https://calendly.com/smbaipartners?hide_gdpr_banner=1"
+            <iframe loading="lazy" title="Book a demo with Kevin on Calendly" src="https://calendly.com/smbaipartners?hide_gdpr_banner=1"
               width="100%" height="100%" frameborder="0" class="min-h-[520px]"></iframe>
           </div>
         </div>
@@ -447,9 +461,9 @@
         <p class="text-sm text-gray-400 mt-1">© <span id="year">2026</span> · Serving San Diego, CA & Beyond</p>
       </div>
       <nav class="flex space-x-6 mt-4 md:mt-0">
-        <a href="#who" class="text-gray-300 hover:text-white transition">Who We Help</a>
-        <a href="#how" class="text-gray-300 hover:text-white transition">How It Works</a>
-        <a href="#features" class="text-gray-300 hover:text-white transition">Features</a>
+        <a href="#who" class="inline-block py-3 text-gray-300 hover:text-white transition">Who We Help</a>
+        <a href="#how" class="inline-block py-3 text-gray-300 hover:text-white transition">How It Works</a>
+        <a href="#features" class="inline-block py-3 text-gray-300 hover:text-white transition">Features</a>
       </nav>
     </div>
   </footer>
@@ -461,6 +475,23 @@
   <script>
     // Keep the copyright year current
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const setMenu = (open) => {
+        mobileMenu.classList.toggle('hidden', !open);
+        menuToggle.setAttribute('aria-expanded', String(open));
+        menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    menuToggle.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+
+    // Hide the sticky mobile demo button once the booking section is on screen
+    const stickyCta = document.getElementById('cta-mobile-sticky');
+    new IntersectionObserver(([entry]) => {
+        stickyCta.classList.toggle('hidden', entry.isIntersecting);
+    }).observe(document.getElementById('schedule'));
 
     // JavaScript for tab functionality
     const tabButtons = document.querySelectorAll('.tab-button');
