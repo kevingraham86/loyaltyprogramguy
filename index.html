@@ -8,6 +8,10 @@
   <meta name="description" content="Launch a high‑ROI SMS loyalty program with Sentext. We help local restaurants, retail shops, and salons in Southern California grow repeat business and revenue—fast." />
   <meta name="keywords" content="restaurant loyalty program, retail sms marketing, salon text marketing, Sentext, customer loyalty, small business, San Diego, Poway" />
   <meta name="author" content="Kevin Graham - SMB AI Partners" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/images/favicon-48.png" sizes="48x48" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#1e3a8a" />
 
   <!-- SEO Essentials -->
   <link rel="canonical" href="https://loyaltyprogramguy.com/" />
@@ -27,6 +31,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    html {
+      scroll-padding-top: 80px; /* keep section headings clear of the sticky header */
+    }
     body {
       font-family: 'Inter', sans-serif;
     }
@@ -72,7 +79,22 @@
       "telephone": "+1-858-341-9719",
       "contactType": "Sales"
     },
-    "sameAs": []
+    "sameAs": [],
+    "founder": { "@id": "https://loyaltyprogramguy.com/#kevin" },
+    "areaServed": ["San Diego, CA", "Poway, CA", "Southern California"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://loyaltyprogramguy.com/#kevin",
+    "name": "Kevin Graham",
+    "jobTitle": "Customer Loyalty Program Consultant",
+    "image": "https://loyaltyprogramguy.com/images/kevin-graham-headshot.jpg",
+    "url": "https://loyaltyprogramguy.com/#about",
+    "worksFor": { "@type": "Organization", "name": "SMB AI Partners" },
+    "knowsAbout": ["customer loyalty programs", "SMS marketing", "customer retention", "repeat customers", "small business marketing"]
   }
   </script>
   <script type="application/ld+json">
@@ -117,14 +139,15 @@
   <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
     <div class="container mx-auto px-6 py-3 flex justify-between items-center">
       <a href="#top" class="flex items-center space-x-3">
-        <img src="images/sentext_logo.jpg" alt="Sentext Logo" class="h-8 w-auto">
-        <span class="text-xl font-bold text-gray-700 tracking-tight">LoyaltyProgramGuy</span>
+        <img src="images/smb-ai-partners-logo-header.png" alt="SMB AI Partners logo" class="h-10 w-auto">
+        <span class="text-xl font-bold text-gray-800 tracking-tight">Loyalty Program Guy</span>
       </a>
       <nav class="hidden md:flex items-center space-x-6">
         <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Features</a>
         <a href="#who" class="text-gray-600 hover:text-blue-600 transition">Who We Help</a>
         <a href="#how" class="text-gray-600 hover:text-blue-600 transition">How It Works</a>
         <a href="#faqs" class="text-gray-600 hover:text-blue-600 transition">FAQs</a>
+        <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
         <a href="#schedule" id="cta-nav-schedule" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition shadow-sm">Schedule a Demo</a>
       </nav>
     </div>
@@ -151,6 +174,42 @@
       </div>
     </section>
     
+    <!-- Stats Strip -->
+    <section class="bg-blue-900 text-white">
+      <div class="container mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <div>
+          <p class="text-4xl font-extrabold">7</p>
+          <p class="mt-1 text-blue-200">automated campaigns working 24/7</p>
+        </div>
+        <div>
+          <p class="text-4xl font-extrabold">100%</p>
+          <p class="mt-1 text-blue-200">opt-in, so customers want your texts</p>
+        </div>
+        <div>
+          <p class="text-4xl font-extrabold">15 min</p>
+          <p class="mt-1 text-blue-200">free demo, no obligation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet Kevin Section -->
+    <section id="about" class="py-20 md:py-28 bg-white">
+      <div class="container mx-auto px-6 grid md:grid-cols-5 gap-12 items-center max-w-5xl">
+        <div class="md:col-span-2">
+          <img src="images/kevin-graham-headshot.jpg" alt="Kevin Graham, the Loyalty Program Guy" width="800" height="1096" loading="lazy" class="rounded-2xl shadow-2xl w-full max-w-sm mx-auto" />
+        </div>
+        <div class="md:col-span-3 text-center md:text-left">
+          <p class="text-blue-600 font-semibold uppercase tracking-wide text-sm">Meet the Loyalty Program Guy</p>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-gray-900">Hi, I'm Kevin Graham.</h2>
+          <p class="mt-4 text-lg text-gray-600">I help local restaurants, retail shops, and salons across San Diego and Southern California get more repeat customers. Most small businesses spend heavily to win a first visit, then have no system to bring that customer back. That's the gap I fix.</p>
+          <p class="mt-4 text-lg text-gray-600">Through Sentext Solutions, I set up and run automated text-message loyalty programs for you, so your regulars keep coming back while you focus on running your business. You work directly with me, not a call center.</p>
+          <div class="mt-8 flex justify-center md:justify-start">
+            <a href="#schedule" id="cta-about-schedule" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md">Talk With Kevin</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 7 Automated Touchpoints Section -->
     <section id="features" class="py-20 md:py-28 bg-gray-50">
         <div class="container mx-auto px-6">
@@ -305,9 +364,21 @@
               <div class="bg-blue-600 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center text-xl mr-4">4</div>
               <h3 class="text-xl font-semibold">Optimize & Report</h3>
             </div>
-            <p class="mt-3 text-gray-600">We monitor performance, fine-tune campaigns, and send you clear reports on your growth and ROI.</p>
+            <p class="mt-3 text-gray-600">We meet with you every month on a review call to walk through your results, fine-tune campaigns, and track your growth and ROI.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section id="guarantee" class="py-16 md:py-20 bg-blue-900 text-white">
+      <div class="container mx-auto px-6 max-w-3xl text-center">
+        <svg class="w-14 h-14 mx-auto text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        <p class="mt-4 text-blue-300 font-semibold uppercase tracking-wide text-sm">The SMB AI Partners Guarantee</p>
+        <h2 class="mt-2 text-3xl md:text-4xl font-bold">3x ROI in 12 Months, or We Work for Free Until You Get There</h2>
+        <p class="mt-4 text-lg text-blue-100">If, after 12 full months of service, your business hasn't achieved a 3x return on your investment with us, we'll keep providing our full monthly services at no charge until that milestone is reached. We only win when you win.</p>
+        <p class="mt-3 text-sm text-blue-300">*Terms apply. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" class="underline hover:text-white">See full guarantee terms</a>.</p>
+        <a href="#schedule" id="cta-guarantee" class="mt-8 inline-block bg-white text-blue-900 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition shadow-lg">Book Your Free Demo</a>
       </div>
     </section>
 
@@ -382,6 +453,10 @@
       </nav>
     </div>
   </footer>
+
+  <!-- Mobile sticky CTA -->
+  <a href="#schedule" id="cta-mobile-sticky" class="md:hidden fixed bottom-4 inset-x-4 z-50 bg-blue-600 text-white text-center font-semibold py-3 rounded-lg shadow-xl hover:bg-blue-700 transition">Book a Free 15-Min Demo</a>
+  <div class="md:hidden h-20 bg-gray-800"></div>
 
   <script>
     // Keep the copyright year current
