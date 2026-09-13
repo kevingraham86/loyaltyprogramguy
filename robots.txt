@@ -1,6 +1,6 @@
-Allow all web crawlers to access all content
+# Allow all web crawlers (including AI crawlers) to access all content
 User-agent: *
 Disallow:
 
-Provide the location of the sitemap
-Sitemap: https://www.google.com/search?q=https://loyaltyprogramguy.com/sitemap.xml
+# Location of the sitemap
+Sitemap: https://loyaltyprogramguy.com/sitemap.xml
