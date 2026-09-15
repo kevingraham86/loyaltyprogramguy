@@ -22,4 +22,5 @@ Industry pages, guides, the About page, `llms.txt` and `sitemap.xml` are generat
 python3 _build/pages.py
 ```
 
-Commit the generated files. The `_build` folder is not published by GitHub Pages.
+Commit the generated files. Note: this repo has a `.nojekyll` file, so GitHub Pages publishes
+every folder, including `_build/`. Never put secrets in it.

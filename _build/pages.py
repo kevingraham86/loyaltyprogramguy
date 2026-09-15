@@ -2,7 +2,7 @@
 
 Run from the repo root:   python3 _build/pages.py
 Edit page content in PAGES below, re-run, commit the generated files.
-GitHub Pages (Jekyll) does not publish folders starting with "_", so this script stays private.
+Note: the repo has .nojekyll, so GitHub Pages publishes this file too. Never put secrets here.
 """
 import json
 import os
