@@ -286,7 +286,7 @@ PAGES = [
 </ul>
 
 <h2>What my programs cost</h2>
-<p>I'm a local agent for SenText Solutions' Repeat Business Program. <strong>Plans start at $99/month and are customized to your needs in your consultation</strong>, based on things like how many customers you see, how many texts you'll send, and whether a check-in kiosk makes sense for your counter.</p>
+<p>I'm a local agent for Sentext Solutions' Repeat Business Program. <strong>Plans start at $99/month and are customized to your needs in your consultation</strong>, based on things like how many customers you see, how many texts you'll send, and whether a check-in kiosk makes sense for your counter.</p>
 <p>Every program includes installation and staff training, carrier approval and registration, campaign support, and free opt-in signage. I'll walk you through every fee, the agreement length, and renewal terms before you sign, so there are no surprises.</p>
 
 <h2>Will it pay for itself?</h2>
@@ -381,7 +381,7 @@ PAGES = [
   <img src="/images/kevin-graham-headshot.jpg" alt="Kevin Graham, founder of SMB AI Partners" width="800" height="1096">
   <div>
     <p class="lede">I help local restaurants, salons, and retail shops across San Diego County get more repeat customers.</p>
-    <p>I'm the founder of SMB AI Partners, based in Poway, California, and a local agent for SenText Solutions' Repeat Business Program. I started SMB AI Partners because the tools that help big companies keep customers coming back should be available to local businesses too.</p>
+    <p>I'm the founder of SMB AI Partners, based in Poway, California, and a local agent for Sentext Solutions' Repeat Business Program. I started SMB AI Partners because the tools that help big companies keep customers coming back should be available to local businesses too.</p>
   </div>
 </div>
 
@@ -574,7 +574,7 @@ def main():
     write("guides/index.html", render(idx, [("Home", "/"), ("Guides", "/guides/")], body))
 
     # sitemap.xml
-    urls = ["", "card/"] + [p["path"] for p in PAGES] + ["guides/"]
+    urls = [""] + [p["path"] for p in PAGES] + ["guides/"]
     items = "".join(f"  <url>\n    <loc>{SITE}/{u}</loc>\n    <lastmod>{TODAY}</lastmod>\n  </url>\n" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{items}</urlset>\n')
 
@@ -582,7 +582,7 @@ def main():
     lines = [
         "# Loyalty Program Guy",
         "",
-        "> Kevin Graham (SMB AI Partners, Poway, CA) sets up and manages automated text message loyalty programs that help restaurants, salons, spas, and retail shops in San Diego County get more repeat customers. Local SenText Solutions agent. Programs are backed by the SMB AI Partners 3x ROI Guarantee.",
+        "> Kevin Graham (SMB AI Partners, Poway, CA) sets up and manages automated text message loyalty programs that help restaurants, salons, spas, and retail shops in San Diego County get more repeat customers. Local Sentext Solutions agent. Programs are backed by the SMB AI Partners 3x ROI Guarantee.",
         "",
         f"Contact: text or call {PHONE_DISPLAY}, kevin@smbaipartners.com, or book a free walkthrough at {CALENDLY}.",
         "",
@@ -597,6 +597,40 @@ def main():
               f"- [Repeat-visit calculator]({SITE}/card/): estimate added monthly revenue from one extra visit per customer.", ""]
     write("llms.txt", "\n".join(lines))
     print(f"built {len(PAGES) + 1} pages, sitemap ({len(urls)} urls), llms.txt")
+    build_card()
+
+
+def build_card():
+    """/card/ = the homepage with the calculator shown first at every screen size, plus a Sentext logo.
+    QR codes and getyourcustomersback.com point here. Re-run after any homepage edit."""
+    h = open("index.html", encoding="utf-8").read()
+
+    def rep(old, new, count=1):
+        nonlocal h
+        assert h.count(old) == count, (old[:70], h.count(old))
+        h = h.replace(old, new)
+
+    rep("<title>Text Loyalty Programs for Local Businesses | San Diego</title>",
+        "<title>Run Your Numbers | Loyalty Program Guy</title>")
+    rep('<meta property="og:url" content="https://loyaltyprogramguy.com/" />',
+        '<meta property="og:url" content="https://loyaltyprogramguy.com/card/" />')
+    # canonical stays the homepage so Google treats /card/ as the same page, not a duplicate
+    rep("gtag('config', 'G-N7JTY70D7C');",
+        "gtag('config', 'G-N7JTY70D7C', { campaign_source: new URLSearchParams(location.search).get('src') || 'card', campaign_medium: 'offline', campaign_name: 'card-landing' });")
+    # calculator visible on all screens, centered on desktop
+    rep("    .calc { display: none; }\n    @media (max-width: 767px) {",
+        "    .calc > * { max-width: 560px; margin-left: auto; margin-right: auto; }\n    @media all {")
+    rep("location: 'home_mobile'", "location: 'card'", count=3)
+    # Sentext logo, top right: inside the desktop nav, and beside the menu button on phones
+    logo = '<img src="/images/sentext-logo.png" width="{w}" height="120" alt="Sentext Solutions logo" class="{cls}">'
+    from PIL import Image
+    w = Image.open("images/sentext-logo.png").width
+    rep('Schedule a Demo</a>\n      </nav>',
+        'Schedule a Demo</a>\n        ' + logo.format(w=w, cls="h-10 w-auto") + '\n      </nav>')
+    rep('      <button id="menu-toggle"',
+        '      ' + logo.format(w=w, cls="md:hidden ml-auto mr-2 h-9 w-auto") + '\n      <button id="menu-toggle"')
+    write("card/index.html", h)
+    print("built card/index.html from index.html")
 
 
 if __name__ == "__main__":
