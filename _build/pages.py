@@ -16,6 +16,13 @@ PHONE_E164 = "+18582186905"
 CALENDLY = "https://calendly.com/smbaipartners"
 GA_ID = "G-N7JTY70D7C"
 
+# Content-Security-Policy (meta tag; GitHub Pages cannot send headers). Keep in sync with index.html and card/index.html.
+CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; "
+       "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; "
+       "img-src 'self' data: https://images.unsplash.com https://*.google-analytics.com https://www.googletagmanager.com; "
+       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; "
+       "frame-src https://calendly.com; base-uri 'self'; form-action 'self'; object-src 'none'")
+
 PERSON = {
     "@type": "Person",
     "@id": f"{SITE}/#kevin",
@@ -35,9 +42,9 @@ PAGES = [
         "path": "restaurants/",
         "kind": "industry",
         "nav": "Restaurants",
-        "title": "Text Loyalty Programs for Restaurants in San Diego | Loyalty Program Guy",
+        "title": "Text Loyalty Programs for Restaurants | San Diego",
         "h1": "Text Message Loyalty Programs for Restaurants",
-        "description": "How San Diego restaurants and cafés use automated text loyalty programs to fill slow nights, bring diners back, and earn more reviews. Local setup by Kevin Graham.",
+        "description": "How San Diego restaurants and cafés use text loyalty programs to fill slow nights, bring diners back, and earn more reviews.",
         "answer": "A text message loyalty program gives restaurant guests a reason to come back: they check in with their phone number, earn rewards automatically, and get timely offers like a bounce-back deal, a birthday treat, or a “we miss you” text when they haven't visited in a while. You own the list, and the campaigns run on their own.",
         "body": """
 <h2>Why repeat guests matter more than new ones</h2>
@@ -81,9 +88,9 @@ PAGES = [
         "path": "salons/",
         "kind": "industry",
         "nav": "Salons & Spas",
-        "title": "Text Loyalty Programs for Salons & Spas in San Diego | Loyalty Program Guy",
+        "title": "Text Loyalty Programs for Salons & Spas | San Diego",
         "h1": "Text Message Loyalty Programs for Salons and Spas",
-        "description": "How salons, barbershops, and spas use automated text loyalty programs to rebook clients, fill last-minute openings, and grow reviews. Local setup in San Diego County.",
+        "description": "How salons, barbershops, and spas use text loyalty programs to rebook clients, fill last-minute openings, and grow reviews.",
         "answer": "For a salon or spa, a text loyalty program keeps clients on a regular schedule. It reminds them when they're due, rewards them for coming back, fills last-minute openings with a quick text, and asks happy clients for reviews, all automatically.",
         "body": """
 <h2>The real problem: clients drifting</h2>
@@ -127,9 +134,9 @@ PAGES = [
         "path": "retail/",
         "kind": "industry",
         "nav": "Retail",
-        "title": "Text Loyalty Programs for Retail Shops in San Diego | Loyalty Program Guy",
+        "title": "Text Loyalty Programs for Retail Shops | San Diego",
         "h1": "Text Message Loyalty Programs for Retail Shops",
-        "description": "How local retail shops use automated text loyalty programs to drive foot traffic, move inventory, and compete with online stores. Local setup in San Diego County.",
+        "description": "How local retail shops use text loyalty programs to drive foot traffic, move inventory, and compete with online stores.",
         "answer": "For a retail shop, a text loyalty program turns one-time shoppers into regulars. Customers check in at the counter, earn rewards, and get texts about new arrivals, flash sales, and VIP events, giving them a reason to visit your store instead of ordering online.",
         "body": """
 <h2>How local shops compete with online stores</h2>
@@ -174,9 +181,9 @@ PAGES = [
         "path": "guides/how-to-get-repeat-customers/",
         "kind": "guide",
         "nav": "How to get repeat customers",
-        "title": "How to Get More Repeat Customers: 9 Ways for Local Businesses",
+        "title": "How to Get More Repeat Customers: 9 Ways That Work",
         "h1": "How to Get More Repeat Customers (9 Ways That Work for Local Businesses)",
-        "description": "Practical ways restaurants, salons, and shops can get customers to come back: capture contact info, reward the second visit, win back lapsed customers, and more.",
+        "description": "Practical ways restaurants, salons, and shops get customers to come back: capture contact info, reward the second visit, and win back lapsed customers.",
         "answer": "To get more repeat customers, capture every customer's contact information with their permission, give them a reason to come back soon after the first visit, reward frequent visits, reach out automatically when someone stops coming in, and make each visit personal. The key is doing this consistently, which is why most businesses automate it.",
         "body": """
 <h2>1. Capture contact information on the first visit</h2>
@@ -222,7 +229,7 @@ PAGES = [
         "path": "guides/punch-card-vs-text-loyalty-program/",
         "kind": "guide",
         "nav": "Punch card vs. text loyalty",
-        "title": "Punch Card vs. Text Message Loyalty Program: Which Is Better?",
+        "title": "Punch Card vs. Text Loyalty Program: Which Is Better?",
         "h1": "Paper Punch Card vs. Text Message Loyalty Program",
         "description": "A side-by-side comparison of paper punch cards and text message loyalty programs for local businesses: cost, customer data, follow-up, fraud, and results.",
         "answer": "A paper punch card is cheap and simple, but you never learn who your customers are and you can't reach them after they leave. A text message loyalty program costs more, but it captures each customer's number with permission, rewards visits automatically, and lets you bring customers back with offers and reminders.",
@@ -263,9 +270,9 @@ PAGES = [
         "path": "guides/sms-loyalty-program-cost/",
         "kind": "guide",
         "nav": "What does it cost?",
-        "title": "How Much Does an SMS Loyalty Program Cost? (2026 Pricing Guide)",
+        "title": "How Much Does an SMS Loyalty Program Cost? (2026 Guide)",
         "h1": "How Much Does an SMS Loyalty Program Cost?",
-        "description": "What a text message loyalty program costs for a small business: monthly plans, setup fees, message overages, compliance fees, and how to tell if it will pay for itself.",
+        "description": "What a text loyalty program costs a small business: monthly plans, setup fees, overages, compliance fees, and whether it pays for itself.",
         "answer": "Most SMS loyalty programs for local businesses cost roughly $99 to $400 per month, depending on how many texts are included and whether a check-in kiosk is part of the plan, plus a one-time setup fee. Watch for message overage charges, annual compliance fees, and contract length when comparing options.",
         "body": """
 <h2>What you're paying for</h2>
@@ -306,7 +313,7 @@ PAGES = [
         "path": "guides/win-back-text-examples/",
         "kind": "guide",
         "nav": "Win-back text examples",
-        "title": "Win-Back Text Message Examples for Restaurants, Salons & Shops",
+        "title": "Win-Back Text Message Examples for Local Businesses",
         "h1": "Win-Back Text Message Examples That Bring Customers Back",
         "description": "Copy-and-paste win-back text message examples for restaurants, salons, and retail shops, plus when to send them and the rules to follow.",
         "answer": "A good win-back text is short, personal, and gives a clear reason to return with a deadline, like “We miss you, Sam! Here's $5 off your next visit, good through Sunday.” Send it after a customer goes longer than usual without visiting, and always include a way to opt out.",
@@ -365,9 +372,9 @@ PAGES = [
         "path": "about/",
         "kind": "about",
         "nav": "About",
-        "title": "About Kevin Graham, the Loyalty Program Guy | San Diego County",
+        "title": "About Kevin Graham, the Loyalty Program Guy",
         "h1": "Hi, I'm Kevin Graham",
-        "description": "Kevin Graham, founder of SMB AI Partners in Poway, CA, helps San Diego County restaurants, salons, and retail shops get more repeat customers with text loyalty programs.",
+        "description": "Kevin Graham of SMB AI Partners in Poway, CA helps San Diego County restaurants, salons, and shops get more repeat customers.",
         "answer": "",
         "body": """
 <div class="about-hero">
@@ -496,6 +503,8 @@ def render(page, crumbs, body_html, answer_html=""):
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="{CSP}" />
   <title>{escape(page['title'])}</title>
   <meta name="description" content="{escape(page['description'])}" />
   <link rel="canonical" href="{url}" />
@@ -503,7 +512,10 @@ def render(page, crumbs, body_html, answer_html=""):
   <meta property="og:description" content="{escape(page['description'])}" />
   <meta property="og:type" content="{'article' if page['kind'] == 'guide' else 'website'}" />
   <meta property="og:url" content="{url}" />
-  <meta property="og:image" content="{SITE}/images/kevin-graham-headshot.jpg" />
+  <meta property="og:image" content="{SITE}/images/share-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <meta name="theme-color" content="#1e3a8a" />
