@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Run Your Numbers | Loyalty Program Guy</title>
+  <meta name="description" content="See how much one extra visit per customer, per month, could add to your business. Free repeat-customer calculator from Kevin Graham, Loyalty Program Guy." />
+  <link rel="canonical" href="https://loyaltyprogramguy.com/card/" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#1e3a8a" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7JTY70D7C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N7JTY70D7C', { campaign_source: 'postcard', campaign_medium: 'qr', campaign_name: 'postcard-4x6' });
+  </script>
+
+  <style>
+    :root { --navy:#1e3a8a; --blue:#2563eb; --ink:#111827; --muted:#4b5563; --line:#e5e7eb; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:17px/1.5 -apple-system, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--ink); background:#f3f4f6; }
+    .wrap { max-width:560px; margin:0 auto; padding:20px 18px 120px; }
+    header { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+    header img { height:40px; width:auto; }
+    header span { font-weight:700; }
+    h1 { font-size:30px; line-height:1.15; margin:0 0 8px; }
+    h1 em { font-style:normal; color:var(--blue); }
+    .lede { color:var(--muted); margin:0 0 20px; }
+    .card { background:#fff; border-radius:16px; padding:20px; box-shadow:0 1px 3px rgba(0,0,0,.08); margin-bottom:16px; }
+    .row { margin-bottom:22px; }
+    .row:last-child { margin-bottom:0; }
+    .row label { display:flex; justify-content:space-between; align-items:baseline; font-weight:600; margin-bottom:10px; }
+    .row label { gap:12px; }
+    .row output { white-space:nowrap; font-size:22px; font-weight:800; color:var(--navy); font-variant-numeric:tabular-nums; }
+    .hint { font-size:13px; color:var(--muted); margin-top:4px; }
+    input[type=range] { width:100%; height:44px; accent-color:var(--blue); margin:0; }
+    .result { background:var(--navy); color:#fff; text-align:center; }
+    .result p { margin:0; color:#bfdbfe; }
+    .big { font-size:44px; font-weight:800; line-height:1.1; margin:6px 0 2px; font-variant-numeric:tabular-nums; }
+    .year { font-size:20px; font-weight:700; color:#fff; margin-top:10px; }
+    .fine { font-size:12px; color:#93c5fd; margin-top:12px; }
+    .cta { display:block; text-align:center; font-weight:700; font-size:18px; text-decoration:none; padding:16px; border-radius:12px; margin-top:10px; min-height:44px; }
+    .cta.primary { background:var(--blue); color:#fff; box-shadow:0 4px 12px rgba(37,99,235,.35); }
+    .cta.secondary { background:#fff; color:var(--navy); border:2px solid var(--navy); }
+    .me { display:flex; gap:14px; align-items:center; }
+    .me img { width:72px; height:72px; border-radius:50%; object-fit:cover; object-position:top; }
+    .me p { margin:0; }
+    .me .name { font-weight:700; }
+    ul.points { padding-left:20px; margin:0; }
+    ul.points li { margin-bottom:6px; }
+    .sticky { position:fixed; left:0; right:0; bottom:0; padding:12px 16px calc(12px + env(safe-area-inset-bottom)); background:rgba(255,255,255,.95); border-top:1px solid var(--line); }
+    .sticky .cta { margin:0 auto; max-width:528px; }
+    footer { text-align:center; font-size:13px; color:var(--muted); margin-top:20px; }
+    footer a { color:var(--muted); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="/images/smb-ai-partners-logo-header.png" width="380" height="250" alt="SMB AI Partners logo">
+    <span>Loyalty Program Guy</span>
+  </header>
+
+  <h1>What's <em>one extra visit</em> worth to you?</h1>
+  <p class="lede">Drag the sliders to match your business. This is what bringing each customer back just one more time a month could add.</p>
+
+  <div class="card">
+    <div class="row">
+      <label for="customers">Customers on your list <output id="customersOut"></output></label>
+      <input id="customers" type="range" min="50" max="3000" step="50" value="500">
+      <div class="hint">Regulars and repeat visitors you could invite to join.</div>
+    </div>
+    <div class="row">
+      <label for="ticket">Average ticket <output id="ticketOut"></output></label>
+      <input id="ticket" type="range" min="5" max="200" step="5" value="30">
+    </div>
+    <div class="row">
+      <label for="visits">Extra visits per customer, per month <output id="visitsOut"></output></label>
+      <input id="visits" type="range" min="0.25" max="2" step="0.25" value="1">
+    </div>
+  </div>
+
+  <div class="card result" aria-live="polite">
+    <p>Potential added revenue</p>
+    <div class="big" id="monthly"></div>
+    <p>per month</p>
+    <div class="year" id="yearly"></div>
+    <div class="fine">An estimate, not a promise. Results depend on your list size, offers, and how actively your staff invites customers to join.</div>
+  </div>
+
+  <a class="cta primary" id="cta-card-book" href="https://calendly.com/smbaipartners" data-cta="book">Book my free 15-min walkthrough</a>
+  <a class="cta secondary" id="cta-card-text" href="sms:+18582186905?&body=Hi%20Kevin%2C%20I%20scanned%20your%20postcard.%20My%20business%20is%3A%20" data-cta="text">Text Kevin: 858-218-6905</a>
+
+  <div class="card" style="margin-top:20px">
+    <div class="me">
+      <img src="/images/kevin-graham-headshot.jpg" alt="Kevin Graham" width="72" height="72">
+      <div>
+        <p class="name">Kevin Graham</p>
+        <p class="hint" style="margin:0">Local SenText agent · SMB AI Partners · Poway, CA</p>
+      </div>
+    </div>
+    <ul class="points" style="margin-top:14px">
+      <li>I install your kiosk and signs in person and train your staff.</li>
+      <li>We review your numbers together every month.</li>
+      <li>Backed by our 3x ROI Guarantee. <a href="/#guarantee">See how it works</a>.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <a href="/">loyaltyprogramguy.com</a> · <a href="mailto:kevin@smbaipartners.com">kevin@smbaipartners.com</a>
+  </footer>
+</div>
+
+<div class="sticky">
+  <a class="cta primary" id="cta-card-sticky" href="https://calendly.com/smbaipartners" data-cta="book_sticky">Book a free walkthrough</a>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const money = n => '$' + Math.round(n).toLocaleString('en-US');
+  let touched = false;
+
+  function update() {
+    const c = +$('customers').value, t = +$('ticket').value, v = +$('visits').value;
+    $('customersOut').textContent = c.toLocaleString('en-US');
+    $('ticketOut').textContent = '$' + t;
+    $('visitsOut').textContent = v === 1 ? '1 visit' : v + ' visits';
+    const monthly = c * t * v;
+    $('monthly').textContent = money(monthly);
+    $('yearly').textContent = money(monthly * 12) + ' per year';
+    return { customers:c, ticket:t, visits:v, monthly };
+  }
+
+  ['customers', 'ticket', 'visits'].forEach(id => {
+    $(id).addEventListener('input', update);
+    $(id).addEventListener('change', () => {
+      const d = update();
+      if (typeof gtag === 'function') {
+        if (!touched) { gtag('event', 'calculator_start'); touched = true; }
+        gtag('event', 'calculator_change', { list_size:d.customers, avg_ticket:d.ticket, extra_visits:d.visits, monthly_estimate:d.monthly });
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-cta]').forEach(a => a.addEventListener('click', () => {
+    if (typeof gtag === 'function') {
+      const d = update();
+      gtag('event', 'generate_lead', { method:a.dataset.cta, list_size:d.customers, avg_ticket:d.ticket, monthly_estimate:d.monthly });
+    }
+  }));
+
+  update();
+</script>
+</body>
+</html>
