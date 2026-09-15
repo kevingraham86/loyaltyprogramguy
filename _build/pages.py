@@ -278,23 +278,12 @@ PAGES = [
   <li><strong>Compliance fees:</strong> some providers charge an annual fee to cover carrier and regulatory requirements.</li>
 </ul>
 
-<h2>The plans I offer</h2>
-<p>I'm a local agent for SenText Solutions' Repeat Business Program. Current plans:</p>
-<div class="table-wrap">
-<table>
-  <tr><th>Plan</th><th>Monthly</th><th>Texts included</th><th>Kiosk</th></tr>
-  <tr><td>Starter</td><td>$99</td><td>500</td><td>No</td></tr>
-  <tr><td>Essential</td><td>$199</td><td>1,000</td><td>Yes</td></tr>
-  <tr><td>Growth</td><td>$299</td><td>1,500</td><td>Yes</td></tr>
-  <tr><td>Premier</td><td>$399</td><td>2,000</td><td>Yes</td></tr>
-</table>
-</div>
-<p>Every plan also includes installation and staff training, carrier approval and registration, campaign support, and free opt-in signage (banner, counter signs, digital sign, social graphic, and staff buttons).</p>
-<p><strong>Other costs to know up front:</strong> a one-time launch fee (quoted in your walkthrough), a $99 annual compliance fee billed each December, and $0.079 per text beyond your plan. Agreements are 12 months and renew automatically unless cancelled in writing at least 30 days before renewal.</p>
-<p class="note">Pricing current as of September 2026 and set by SenText Solutions; subject to change.</p>
+<h2>What my programs cost</h2>
+<p>I'm a local agent for SenText Solutions' Repeat Business Program. <strong>Plans start at $99/month and are customized to your needs in your consultation</strong>, based on things like how many customers you see, how many texts you'll send, and whether a check-in kiosk makes sense for your counter.</p>
+<p>Every program includes installation and staff training, carrier approval and registration, campaign support, and free opt-in signage. I'll walk you through every fee, the agreement length, and renewal terms before you sign, so there are no surprises.</p>
 
 <h2>Will it pay for itself?</h2>
-<p>Add up a year of cost, then compare it with the revenue from extra visits. For example, a $299 plan for 12 months plus the $99 compliance fee is $3,687 before the launch fee. At a $25 average ticket, that's about 148 extra visits over a year, or roughly 12 a month, to break even.</p>
+<p>Add up a year of cost, then compare it with the revenue from extra visits. For example, if your program costs about $300 a month and your average ticket is $25, you need roughly 12 extra visits a month to break even. Everything beyond that is added revenue.</p>
 <p>That's why I back programs with a <a href="/#guarantee">3x ROI Guarantee</a>: if the program doesn't return at least three times what you invested in the first 12 months, SMB AI Partners pays your monthly service until it does. Terms apply. <a href="/card/">Run your own numbers</a>.</p>
 
 <h2>Questions to ask any provider</h2>
@@ -310,7 +299,7 @@ PAGES = [
         "faqs": [
             ("Is there a cheaper option than a monthly SMS program?", "A paper punch card costs almost nothing, but it can't reach customers after they leave. See the punch card vs. text program comparison to decide which fits your business."),
             ("Why do plans with a kiosk cost more?", "The kiosk includes hardware and makes joining effortless at your counter, which usually grows your customer list much faster than signs alone."),
-            ("Can I cancel anytime?", "With the plans I offer, agreements are 12 months and auto-renew unless cancelled in writing at least 30 days before renewal. Always check contract terms before signing with any provider."),
+            ("Can I cancel anytime?", "Most SMS loyalty programs, including the ones I offer, use a term agreement rather than month-to-month. I review the agreement length and renewal terms with you before you sign. Always check contract terms with any provider."),
         ],
     },
     {
