@@ -71,16 +71,16 @@
   <div class="card">
     <div class="row">
       <label for="customers">Customers on your list <output id="customersOut"></output></label>
-      <input id="customers" type="range" min="50" max="3000" step="50" value="500">
+      <input id="customers" type="range" min="50" max="3000" step="50" value="1000">
       <div class="hint">Regulars and repeat visitors you could invite to join.</div>
     </div>
     <div class="row">
       <label for="ticket">Average ticket <output id="ticketOut"></output></label>
-      <input id="ticket" type="range" min="5" max="200" step="5" value="30">
+      <input id="ticket" type="range" min="5" max="200" step="5" value="15">
     </div>
     <div class="row">
       <label for="visits">Extra visits per customer, per month <output id="visitsOut"></output></label>
-      <input id="visits" type="range" min="0.25" max="2" step="0.25" value="1">
+      <input id="visits" type="range" min="0" max="3" step="1" value="1" aria-valuetext="1 visit">
     </div>
   </div>
 
@@ -121,14 +121,16 @@
 
 <script>
   const $ = id => document.getElementById(id);
+  const VISITS = [0.5, 1, 2, 3];
   const money = n => '$' + Math.round(n).toLocaleString('en-US');
   let touched = false;
 
   function update() {
-    const c = +$('customers').value, t = +$('ticket').value, v = +$('visits').value;
+    const c = +$('customers').value, t = +$('ticket').value, v = VISITS[+$('visits').value];
     $('customersOut').textContent = c.toLocaleString('en-US');
     $('ticketOut').textContent = '$' + t;
     $('visitsOut').textContent = v === 1 ? '1 visit' : v + ' visits';
+    $('visits').setAttribute('aria-valuetext', $('visitsOut').textContent);
     const monthly = c * t * v;
     $('monthly').textContent = money(monthly);
     $('yearly').textContent = money(monthly * 12) + ' per year';
