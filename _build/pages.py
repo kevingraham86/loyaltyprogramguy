@@ -17,11 +17,11 @@ CALENDLY = "https://calendly.com/smbaipartners"
 GA_ID = "G-N7JTY70D7C"
 
 # Content-Security-Policy (meta tag; GitHub Pages cannot send headers). Keep in sync with index.html and card/index.html.
-CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; "
+CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com; "
        "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; "
        "img-src 'self' data: https://images.unsplash.com https://*.google-analytics.com https://www.googletagmanager.com; "
        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; "
-       "frame-src https://calendly.com; base-uri 'self'; form-action 'self'; object-src 'none'")
+       "frame-src https://calendly.com https://challenges.cloudflare.com; base-uri 'self'; form-action 'self'; object-src 'none'")
 
 PERSON = {
     "@type": "Person",
@@ -412,6 +412,58 @@ PAGES = [
 """,
         "faqs": [],
     },
+    # ---------------------------------------------------------------- privacy
+    {
+        "path": "privacy/",
+        "kind": "legal",
+        "nav": "Privacy Policy",
+        "title": "Privacy Policy | Loyalty Program Guy",
+        "h1": "Privacy Policy",
+        "description": "How SMB AI Partners collects, uses, and protects information on loyaltyprogramguy.com.",
+        "answer": "",
+        "body": """
+<p class="note">Last updated: September 16, 2026</p>
+<p>This policy explains how SMB AI Partners LLC ("we," "us"), which operates loyaltyprogramguy.com, collects and uses information. Questions: <a href="mailto:kevin@smbaipartners.com">kevin@smbaipartners.com</a> or text 858-218-6905.</p>
+
+<h2>Information we collect</h2>
+<ul>
+  <li><strong>Information you give us.</strong> If you fill out our form, we collect your name, business name, mobile phone number, email (optional), and the numbers you entered in our calculator. If you text, email, or book a call with us, we receive what you send.</li>
+  <li><strong>Usage information.</strong> We use Google Analytics and our own basic analytics to understand how visitors use the site, such as pages viewed, calculator use, button clicks, the link or code that brought you here, and your approximate country. We set cookies to count unique visitors and to show consistent page versions when we test changes.</li>
+  <li><strong>Security checks.</strong> Our form uses Cloudflare Turnstile to block spam and bots. Cloudflare processes technical signals from your browser for that purpose. We store a one-way hashed version of your IP address for up to a day's rate limiting, not your IP address itself.</li>
+</ul>
+
+<h2>How we use it</h2>
+<ul>
+  <li>To contact you about your results and our services, as you requested.</li>
+  <li>To improve the site and our marketing.</li>
+  <li>To prevent spam, fraud, and abuse.</li>
+</ul>
+
+<h2>Text messages</h2>
+<p>If you check the consent box, you agree that Kevin Graham / SMB AI Partners may call or text the number you provide, including automated texts, about your results and our services. Consent is not a condition of purchase. Message and data rates may apply. Message frequency varies. Reply STOP to opt out at any time, or HELP for help. We do not sell or share your phone number or text-messaging consent with third parties for their marketing.</p>
+
+<h2>Sharing</h2>
+<p>We do not sell your personal information. We share it only with service providers that help us run the site and our business (for example Cloudflare for hosting and security, Google for analytics, and Calendly for scheduling), when required by law, or if our business is transferred.</p>
+
+<h2>Retention</h2>
+<p>We keep form submissions as long as needed to follow up with you and run our business, then delete them. You can ask us to delete your information at any time.</p>
+
+<h2>Your choices and rights</h2>
+<ul>
+  <li>Reply STOP to any text, or email us, to stop messages.</li>
+  <li>California residents may request access to or deletion of their personal information, and will not be discriminated against for doing so. Email <a href="mailto:kevin@smbaipartners.com">kevin@smbaipartners.com</a> with your request.</li>
+  <li>You can block or delete cookies in your browser settings, and opt out of Google Analytics with Google's browser add-on.</li>
+  <li>We do not respond to browser "Do Not Track" signals, because there is no common standard for them.</li>
+</ul>
+
+<h2>Children</h2>
+<p>This site is for business owners and is not directed to children under 13.</p>
+
+<h2>Changes</h2>
+<p>We may update this policy. The date at the top shows the latest version.</p>
+""",
+        "faqs": [],
+    },
 ]
 
 GUIDES = [p for p in PAGES if p["kind"] == "guide"]
@@ -437,7 +489,7 @@ def footer():
     <a href="sms:{PHONE_E164}">Text {PHONE_DISPLAY}</a><br><a href="mailto:kevin@smbaipartners.com">kevin@smbaipartners.com</a></div>
   <div><strong>Industries</strong>{ind}</div>
   <div><strong>Guides</strong>{gd}<a href="/card/">Repeat-visit calculator</a></div>
-  <div><strong>Company</strong><a href="/">Home</a><br><a href="/about/">About Kevin</a><br><a href="/#guarantee">3x ROI Guarantee</a><br><a href="https://www.smbaipartners.com/">SMB AI Partners</a><br>
+  <div><strong>Company</strong><a href="/">Home</a><br><a href="/about/">About Kevin</a><br><a href="/#guarantee">3x ROI Guarantee</a><br><a href="/privacy/">Privacy Policy</a><br><a href="https://www.smbaipartners.com/">SMB AI Partners</a><br>
     <span>© <span class="yr">{date.today().year}</span></span></div>
 </div></footer>"""
 
@@ -620,7 +672,7 @@ def build_card():
     # calculator visible on all screens, centered on desktop
     rep("    .calc { display: none; }\n    @media (max-width: 767px) {",
         "    .calc > * { max-width: 560px; margin-left: auto; margin-right: auto; }\n    @media all {")
-    rep("location: 'home_mobile'", "location: 'card'", count=3)
+    rep("const CALC_LOC = 'home_mobile';", "const CALC_LOC = 'card';")
     # Sentext logo, top right: inside the desktop nav, and beside the menu button on phones
     logo = '<img src="/images/sentext-logo.png" width="{w}" height="120" alt="Sentext Solutions logo" class="{cls}">'
     from PIL import Image
