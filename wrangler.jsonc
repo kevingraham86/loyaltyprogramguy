@@ -8,7 +8,9 @@
   // Serve the real domain. DNS records for both hostnames must be proxied (orange cloud).
   "routes": [
     { "pattern": "loyaltyprogramguy.com/*", "zone_name": "loyaltyprogramguy.com" },
-    { "pattern": "www.loyaltyprogramguy.com/*", "zone_name": "loyaltyprogramguy.com" }
+    { "pattern": "www.loyaltyprogramguy.com/*", "zone_name": "loyaltyprogramguy.com" },
+    { "pattern": "getyourcustomersback.com/*", "zone_name": "getyourcustomersback.com" },
+    { "pattern": "www.getyourcustomersback.com/*", "zone_name": "getyourcustomersback.com" }
   ],
   "assets": {
     "directory": "./dist",

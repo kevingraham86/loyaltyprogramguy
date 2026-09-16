@@ -14,6 +14,11 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const path = url.pathname;
+    // getyourcustomersback.com (+ www): tracked redirect to the calculator.
+    //   /        -> src=gycb      /poway -> src=gycb-poway
+    if (url.hostname === "getyourcustomersback.com" || url.hostname === "www.getyourcustomersback.com") {
+      return handleVanity(request, ctx, env, url, "gycb");
+    }
     // Canonical host: https://loyaltyprogramguy.com (workers.dev stays reachable for testing)
     if (url.hostname === "www.loyaltyprogramguy.com" || (url.protocol === "http:" && url.hostname.endsWith("loyaltyprogramguy.com"))) {
       url.hostname = "loyaltyprogramguy.com";
@@ -82,6 +87,16 @@ async function handleGo(request, env, ctx, code) {
     dest.searchParams.set("src", code);
     ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `/go/${code}`, is_bot: isBot(request) }));
   }
+  return new Response(null, { status: 302, headers: { Location: dest.toString(), "Cache-Control": "no-store" } });
+}
+
+// ---------------------------------------------------------------- vanity domains
+function handleVanity(request, ctx, env, url, prefix) {
+  const seg = (url.pathname.split("/").filter(Boolean)[0] || "").toLowerCase().replace(/[^a-z0-9-]/g, "");
+  const code = (seg ? `${prefix}-${seg}` : prefix).slice(0, 40);
+  const dest = new URL("https://loyaltyprogramguy.com/card/");
+  dest.searchParams.set("src", code);
+  ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `${url.hostname}${url.pathname}`.slice(0, 100), is_bot: isBot(request) }));
   return new Response(null, { status: 302, headers: { Location: dest.toString(), "Cache-Control": "no-store" } });
 }
 
