@@ -17,8 +17,8 @@ CALENDLY = "https://calendly.com/smbaipartners"
 GA_ID = "G-N7JTY70D7C"
 
 # Content-Security-Policy (meta tag; GitHub Pages cannot send headers). Keep in sync with index.html and card/index.html.
-CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com; "
-       "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; "
+CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com; "
+       "connect-src 'self' https://cloudflareinsights.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; "
        "img-src 'self' data: https://images.unsplash.com https://*.google-analytics.com https://www.googletagmanager.com; "
        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; "
        "frame-src https://calendly.com https://challenges.cloudflare.com; base-uri 'self'; form-action 'self'; object-src 'none'")
