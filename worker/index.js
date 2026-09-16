@@ -144,7 +144,7 @@ async function handleLead(request, env) {
     (request.cf && request.cf.country) || null, ipHash
   ).run();
 
-  await notify(env, { business, source: str(body.source, 40) });
+  await notify(env, { business, source: str(body.source, 40), estimate: int(calc.monthly_estimate), adminUrl: new URL("/admin", request.url).toString() });
   return json({ ok: true });
 }
 
@@ -159,17 +159,21 @@ async function verifyTurnstile(env, token, ip) {
   return data.success === true;
 }
 
-// Optional: set NOTIFY_WEBHOOK (wrangler secret) to a Discord/Slack webhook URL.
-// The message never includes the lead's contact details; view those in /admin.
-async function notify(env, { business, source }) {
+// Optional: set NOTIFY_WEBHOOK (wrangler secret) to a Slack incoming-webhook URL (Discord also works).
+// The alert never includes the lead's contact details; those stay in /admin.
+async function notify(env, { business, source, estimate, adminUrl }) {
   if (!env.NOTIFY_WEBHOOK) return;
-  const text = `New calculator lead: ${business}${source ? ` (source: ${source})` : ""}. Details in /admin.`;
+  const text = `:tada: New calculator lead: *${business}*` +
+    (estimate ? ` (their estimate: $${Number(estimate).toLocaleString("en-US")}/mo)` : "") +
+    (source ? `, source: ${source}` : "") + `\n<${adminUrl}|Open the lead dashboard>`;
+  const isDiscord = env.NOTIFY_WEBHOOK.includes("discord.com");
   try {
-    await fetch(env.NOTIFY_WEBHOOK, {
+    const r = await fetch(env.NOTIFY_WEBHOOK, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: text, text }),
+      body: JSON.stringify(isDiscord ? { content: text.replace(/<([^|>]+)\|([^>]+)>/g, "$2: $1") } : { text }),
     });
+    if (!r.ok) console.error("notify failed", r.status, await r.text());
   } catch (e) { console.error("notify failed", e); }
 }
 
