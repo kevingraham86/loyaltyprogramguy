@@ -14,7 +14,7 @@ export async function renderAdmin(request, env) {
   const q = (sql, ...b) => env.DB.prepare(sql).bind(...b).all().then((r) => r.results);
 
   const [leads, ab, sources, links, daily] = await Promise.all([
-    q("SELECT * FROM leads WHERE created_at > datetime('now', ?) ORDER BY id DESC LIMIT 200", since),
+    q("SELECT * FROM leads WHERE status != 'test' AND created_at > datetime('now', ?) ORDER BY id DESC LIMIT 200", since),
     q(`SELECT variant,
          COUNT(DISTINCT CASE WHEN type='page_view' THEN visitor_id END) AS visitors,
          COUNT(DISTINCT CASE WHEN type='calculator_start' THEN visitor_id END) AS calc_users,
