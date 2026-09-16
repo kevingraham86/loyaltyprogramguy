@@ -14,6 +14,12 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const path = url.pathname;
+    // Canonical host: https://loyaltyprogramguy.com (workers.dev stays reachable for testing)
+    if (url.hostname === "www.loyaltyprogramguy.com" || (url.protocol === "http:" && url.hostname.endsWith("loyaltyprogramguy.com"))) {
+      url.hostname = "loyaltyprogramguy.com";
+      url.protocol = "https:";
+      return Response.redirect(url.toString(), 301);
+    }
     try {
       if (path === "/api/lead") return await handleLead(request, env);
       if (path === "/api/event") return await handleEvent(request, env);

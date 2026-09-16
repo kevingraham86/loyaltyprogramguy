@@ -5,13 +5,19 @@
   "main": "worker/index.js",
   "compatibility_date": "2026-09-15",
   "workers_dev": true,
+  // Serve the real domain. DNS records for both hostnames must be proxied (orange cloud).
+  "routes": [
+    { "pattern": "loyaltyprogramguy.com/*", "zone_name": "loyaltyprogramguy.com" },
+    { "pattern": "www.loyaltyprogramguy.com/*", "zone_name": "loyaltyprogramguy.com" }
+  ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none",
-    // A/B rewriting needs the Worker on the calculator pages; API routes are Worker-only
-    "run_worker_first": ["/", "/card/", "/api/*", "/go/*", "/admin", "/admin/*"]
+    // Every request goes through the Worker first (www/http redirects, A/B, API). Static files are
+    // then served via env.ASSETS. Well within the free plan's 100,000 requests/day.
+    "run_worker_first": true
   },
   "vars": {
     // Public site key (safe to commit). The secret lives in: wrangler secret put TURNSTILE_SECRET

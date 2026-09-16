@@ -1,9 +1,10 @@
 #!/bin/sh
-# Copy the publishable site into ./dist for the Cloudflare Worker (run from repo root).
+# Copy ONLY the publishable site into ./dist for the Cloudflare Worker (run from repo root).
+# Allowlist on purpose: anything not listed here is never published.
 set -e
 rm -rf dist && mkdir dist
-rsync -a --exclude .git --exclude dist --exclude _build --exclude worker --exclude node_modules \
-  --exclude README.md --exclude tailwind.config.js --exclude css/tailwind.input.css \
-  --exclude .nojekyll --exclude CNAME --exclude .gitignore --exclude 'wrangler.jsonc' --exclude .wrangler \
-  ./ dist/
+for f in index.html favicon.ico robots.txt sitemap.xml llms.txt; do cp "$f" dist/; done
+for d in images css card about guides restaurants retail salons privacy; do cp -R "$d" dist/; done
+rm -f dist/css/tailwind.input.css
+find dist -name '.*' -delete
 echo "dist ready: $(find dist -type f | wc -l | tr -d ' ') files"
