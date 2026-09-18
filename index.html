@@ -598,7 +598,7 @@
       const VISITS = [0.5, 1, 2, 3];
       const el = id => document.getElementById(id);
       const money = n => '$' + Math.round(n).toLocaleString('en-US');
-      const src = new URLSearchParams(location.search).get('src') || '';
+      const src = new URLSearchParams(location.search).get('src') || document.body.dataset.src || '';
       const track = (type, detail) => {
         try {
           fetch('/api/event', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },

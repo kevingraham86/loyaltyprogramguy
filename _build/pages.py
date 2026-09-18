@@ -668,7 +668,7 @@ def build_card():
         '<meta property="og:url" content="https://loyaltyprogramguy.com/card/" />')
     # canonical stays the homepage so Google treats /card/ as the same page, not a duplicate
     rep("gtag('config', 'G-N7JTY70D7C');",
-        "gtag('config', 'G-N7JTY70D7C', { campaign_source: new URLSearchParams(location.search).get('src') || 'card', campaign_medium: 'offline', campaign_name: 'card-landing' });")
+        "gtag('config', 'G-N7JTY70D7C', { campaign_source: new URLSearchParams(location.search).get('src') || (location.pathname.match(/^\\/gycb(?:\\/([a-z0-9-]+))?/i) ? 'gycb' + (RegExp.$1 ? '-' + RegExp.$1.toLowerCase() : '') : 'card'), campaign_medium: 'offline', campaign_name: 'card-landing' });")
     # calculator visible on all screens, centered on desktop
     rep("    .calc { display: none; }\n    @media (max-width: 767px) {",
         "    .calc > * { max-width: 560px; margin-left: auto; margin-right: auto; }\n    @media all {")

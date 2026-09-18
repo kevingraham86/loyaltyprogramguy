@@ -31,6 +31,11 @@ export default {
       if (path.startsWith("/go/")) return await handleGo(request, env, ctx, path.slice(4).replace(/\/$/, ""));
       if (path === "/admin" || path.startsWith("/admin/")) return await renderAdmin(request, env);
       if (path === "/" || path === "/card/") return await servePage(request, env, ctx, url);
+      const landing = path.match(/^\/gycb(?:\/([a-z0-9-]{1,30}))?\/?$/i);
+      if (landing) {
+        const source = landing[1] ? `gycb-${landing[1].toLowerCase()}` : "gycb";
+        return await servePage(request, env, ctx, url, { assetPath: "/card/", source });
+      }
       return env.ASSETS.fetch(request);
     } catch (err) {
       console.error(path, err && err.stack || err);
@@ -41,8 +46,9 @@ export default {
 };
 
 // ---------------------------------------------------------------- pages + A/B
-async function servePage(request, env, ctx, url) {
-  const res = await env.ASSETS.fetch(request);
+// opts.assetPath: serve a different asset (e.g. /gycb serves /card/); opts.source: tracking source for landing paths
+async function servePage(request, env, ctx, url, opts = {}) {
+  const res = await env.ASSETS.fetch(opts.assetPath ? new Request(new URL(opts.assetPath, url), request) : request);
   const type = res.headers.get("content-type") || "";
   if (!res.ok || !type.includes("text/html")) return res;
 
@@ -61,7 +67,7 @@ async function servePage(request, env, ctx, url) {
   }
   const bot = isBot(request);
   ctx.waitUntil(logEvent(env, request, {
-    type: "page_view", experiment: exp.id, variant, source: url.searchParams.get("src"),
+    type: "page_view", experiment: exp.id, variant, source: opts.source || url.searchParams.get("src"),
     path: url.pathname, visitor_id: vid, is_bot: bot,
   }));
 
@@ -69,12 +75,12 @@ async function servePage(request, env, ctx, url) {
   const rewritten = new HTMLRewriter()
     .on(`[data-ab="${exp.id}"]`, { element(el) { el.setInnerContent(v.text); el.setAttribute("data-variant", variant); } })
     .on("[data-turnstile-sitekey]", { element(el) { el.setAttribute("data-sitekey", env.TURNSTILE_SITEKEY || ""); } })
-    .on("body", { element(el) { el.setAttribute("data-vid", vid); el.setAttribute(`data-ab-${exp.id}`, variant); } })
+    .on("body", { element(el) { el.setAttribute("data-vid", vid); el.setAttribute(`data-ab-${exp.id}`, variant); if (opts.source) el.setAttribute("data-src", opts.source); } })
     .transform(res);
 
   const out = new Response(rewritten.body, rewritten);
   out.headers.set("Cache-Control", "private, no-store");
-  out.headers.set("X-Robots-Tag", url.pathname === "/card/" ? "noindex" : "all");
+  out.headers.set("X-Robots-Tag", url.pathname === "/" ? "all" : "noindex");
   for (const c of setCookies) out.headers.append("Set-Cookie", c);
   return out;
 }
@@ -94,8 +100,7 @@ async function handleGo(request, env, ctx, code) {
 function handleVanity(request, ctx, env, url, prefix) {
   const seg = (url.pathname.split("/").filter(Boolean)[0] || "").toLowerCase().replace(/[^a-z0-9-]/g, "");
   const code = (seg ? `${prefix}-${seg}` : prefix).slice(0, 40);
-  const dest = new URL("https://loyaltyprogramguy.com/card/");
-  dest.searchParams.set("src", code);
+  const dest = new URL(seg ? `https://loyaltyprogramguy.com/${prefix}/${seg.slice(0, 30)}` : `https://loyaltyprogramguy.com/${prefix}`);
   ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `${url.hostname}${url.pathname}`.slice(0, 100), is_bot: isBot(request) }));
   return new Response(null, { status: 302, headers: { Location: dest.toString(), "Cache-Control": "no-store" } });
 }

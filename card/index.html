@@ -106,7 +106,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-N7JTY70D7C', { campaign_source: new URLSearchParams(location.search).get('src') || 'card', campaign_medium: 'offline', campaign_name: 'card-landing' });
+  gtag('config', 'G-N7JTY70D7C', { campaign_source: new URLSearchParams(location.search).get('src') || (location.pathname.match(/^\/gycb(?:\/([a-z0-9-]+))?/i) ? 'gycb' + (RegExp.$1 ? '-' + RegExp.$1.toLowerCase() : '') : 'card'), campaign_medium: 'offline', campaign_name: 'card-landing' });
 </script>
   
   <!-- JSON-LD Structured Data -->
@@ -600,7 +600,7 @@
       const VISITS = [0.5, 1, 2, 3];
       const el = id => document.getElementById(id);
       const money = n => '$' + Math.round(n).toLocaleString('en-US');
-      const src = new URLSearchParams(location.search).get('src') || '';
+      const src = new URLSearchParams(location.search).get('src') || document.body.dataset.src || '';
       const track = (type, detail) => {
         try {
           fetch('/api/event', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
