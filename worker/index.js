@@ -31,6 +31,9 @@ export default {
       if (path.startsWith("/go/")) return await handleGo(request, env, ctx, path.slice(4).replace(/\/$/, ""));
       if (path === "/admin" || path.startsWith("/admin/")) return await renderAdmin(request, env);
       if (path === "/" || path === "/card/") return await servePage(request, env, ctx, url);
+      if (path === "/adamsave" || path === "/adamsave/") {
+        return await servePage(request, env, ctx, url, { assetPath: "/adamsave/", source: url.searchParams.get("src") || "adamsave" });
+      }
       const landing = path.match(/^\/gycb(?:\/([a-z0-9-]{1,30}))?\/?$/i);
       if (landing) {
         const source = landing[1] ? `gycb-${landing[1].toLowerCase()}` : "gycb";
@@ -100,7 +103,10 @@ async function handleGo(request, env, ctx, code) {
 function handleVanity(request, ctx, env, url, prefix) {
   const seg = (url.pathname.split("/").filter(Boolean)[0] || "").toLowerCase().replace(/[^a-z0-9-]/g, "");
   const code = (seg ? `${prefix}-${seg}` : prefix).slice(0, 40);
-  const dest = new URL(seg ? `https://loyaltyprogramguy.com/${prefix}/${seg.slice(0, 30)}` : `https://loyaltyprogramguy.com/${prefix}`);
+  // TEMPORARY (Adams Ave Street Fair, Sept 19-20 2026): bare domain goes to the fair page.
+  // After the offer ends (Sept 25) set VANITY_ROOT back to `/${prefix}`.
+  const VANITY_ROOT = "/adamsave?src=gycb";
+  const dest = new URL(seg ? `https://loyaltyprogramguy.com/${prefix}/${seg.slice(0, 30)}` : `https://loyaltyprogramguy.com${VANITY_ROOT}`);
   ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `${url.hostname}${url.pathname}`.slice(0, 100), is_bot: isBot(request) }));
   return new Response(null, { status: 302, headers: { Location: dest.toString(), "Cache-Control": "no-store" } });
 }
