@@ -122,7 +122,7 @@
 
   <div class="offer" style="border-width:2px">
     <p class="save" style="font-size:26px">The 3X ROI Guarantee</p>
-    <p>If the program does not generate at least three times what you pay for it, we keep working for free until it does. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener">Terms apply.</a> You own your customer list either way.</p>
+    <p>If the program does not generate at least three times what you pay for it, we keep working for free until it does. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" style="font-weight:400">Terms apply.</a> You own your customer list either way.</p>
   </div>
 
   <h2>Run your numbers</h2>
@@ -140,10 +140,9 @@
       <input id="visits" type="range" min="0" max="3" step="1" value="1">
     </div>
     <div class="result" aria-live="polite">
-      <div class="res-lbl" id="lbl">One extra visit per customer per month is worth</div>
+      <div class="res-lbl" id="lbl">One extra visit per customer per month could be worth</div>
       <div class="res-num" id="out">$10,000</div>
       <div class="res-sub" id="sub">per month in added revenue</div>
-      <div class="res-fine">An estimate, not a promise. Results depend on your list, your offers, and how often staff invite customers to join.</div>
     </div>
   </div>
 
@@ -232,7 +231,7 @@
     $('tick-out').textContent = '$' + t;
     $('visits-out').textContent = v === 1 ? '1 visit' : v + ' visits';
     $('visits').setAttribute('aria-valuetext', $('visits-out').textContent);
-    $('lbl').textContent = (v === 1 ? 'One extra visit' : v + ' extra visits') + ' per customer per month is worth';
+    $('lbl').textContent = (v === 1 ? 'One extra visit' : v + ' extra visits') + ' per customer per month could be worth';
     var m = c * t * v;
     $('out').textContent = money(m);
     $('sub').textContent = 'per month · ' + money(m * 12) + ' a year';
