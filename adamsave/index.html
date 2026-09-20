@@ -41,9 +41,10 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     line-height: 1.5; -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 28px 20px 56px; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 22px 20px 96px; }
   .eyebrow { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--accent-fg); background: var(--accent); display: inline-block; padding: 6px 12px; border-radius: 999px; }
-  h1 { font-size: 30px; line-height: 1.14; margin: 10px 0 14px; letter-spacing: -.02em; }
+  h1 { font-size: 25px; line-height: 1.15; margin: 8px 0 12px; letter-spacing: -.02em; }
+  @media (max-width: 400px) { h1 { font-size: 23px; } .wrap { padding-top: 16px; } }
   h1 .light { font-weight: 400; color: var(--muted); }
   .lede { font-size: 17px; color: var(--fg); margin: 0 0 24px; }
   .offer { border: 2px solid var(--accent); background: var(--tint); border-radius: 12px; padding: 18px; margin: 0 0 26px; }
@@ -57,6 +58,9 @@
     border-radius: 10px; font-weight: 700; font-size: 16px;
     background: var(--accent); color: var(--accent-fg); border: 2px solid var(--accent);
   }
+  .calc .btn { display: block; margin-top: 10px; }
+  .sticky { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+  @media (min-width: 700px) { .sticky { display: none; } }
   .btn.alt { background: transparent; color: var(--fg); border-color: var(--line); }
   h2 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 34px 0 12px; }
   .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -86,15 +90,15 @@
   footer a { color: var(--fg); }
   .muted { color: var(--muted); }
   /* calculator with sliders */
-  .calc { border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
-  .calc .row { margin-bottom: 18px; }
+  .calc { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .calc .row { margin-bottom: 12px; }
   .calc label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 15px; font-weight: 600; }
   .calc output { white-space: nowrap; font-size: 22px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
   .calc input[type=range] { width: 100%; height: 44px; margin: 0; accent-color: var(--accent); }
   .calc .hint { font-size: 13px; color: var(--muted); margin-top: 2px; }
-  .result { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 14px; text-align: center; }
+  .result { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 12px; text-align: center; }
   .res-lbl { font-size: 13px; color: var(--muted); }
-  .res-num { color: var(--accent); font-size: 40px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .res-num { color: var(--accent); font-size: 36px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; margin: 4px 0; font-variant-numeric: tabular-nums; }
   .res-sub { font-size: 13px; color: var(--muted); }
   .res-fine { font-size: 12px; color: var(--muted); margin-top: 8px; }
 </style>
@@ -105,27 +109,6 @@
   <div class="eyebrow">Adams Avenue Street Fair &middot; Normal Heights &middot; Sept 19-20, 2026</div>
   <h1>Turn one extra visit a month<br><span class="light">into your biggest revenue line.</span></h1>
 
-  <p class="lede">Today you are surrounded by thousands of people. Most of them you will never see again. Sentext's Repeat Business Program gets them to opt in by text before they walk away, then brings them back on demand. No app to download, no ad spend, no hoping.</p>
-
-  <div class="offer">
-    <div class="tag">Street fair offer</div>
-    <p class="save">Setup is $1,000.<br>Today it is $500.</p>
-    <p><strong>50% off your one-time setup fee</strong> on any plan when you start this weekend or within 7 days, up to $1,250 back on the Growth plan.</p>
-    <p class="fine">Offer expires Friday, September 25, 2026. Monthly service price is unchanged.</p>
-  </div>
-
-  <div class="btns">
-    <a class="btn" href="tel:+18582186905" data-cta="call">Call (858) 218-6905</a>
-    <a class="btn alt" id="cta-text" href="sms:+18582186905?&body=Met%20you%20at%20the%20Adams%20Ave%20Street%20Fair%20-%20send%20me%20the%2010%20minute%20demo%20info" data-cta="text">Text me</a>
-    <a class="btn alt" href="mailto:kevin@smbaipartners.com?subject=Street%20Fair%20offer%20-%2010%20minute%20demo&body=Business%20name%3A%0ABest%20time%20to%20call%3A" data-cta="email">Email</a>
-  </div>
-
-  <div class="offer" style="border-width:2px">
-    <p class="save" style="font-size:26px">The 3X ROI Guarantee</p>
-    <p>If the program does not generate at least three times what you pay for it, we keep working for free until it does. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" style="font-weight:400">Terms apply.</a> You own your customer list either way.</p>
-  </div>
-
-  <h2>Run your numbers</h2>
   <div class="calc">
     <div class="row">
       <label for="cust">Customers you serve in a typical month <output id="cust-out"></output></label>
@@ -144,6 +127,30 @@
       <div class="res-num" id="out">$10,000</div>
       <div class="res-sub" id="sub">per month in added revenue</div>
     </div>
+    <a class="btn" id="cta-top-text" href="sms:+18582186905?&body=" data-cta="text_top">Text Kevin your numbers</a>
+    <a class="btn alt" href="tel:+18582186905" data-cta="call_top">Or call (858) 218-6905</a>
+  </div>
+
+
+  <div class="offer">
+    <div class="tag">Street fair offer</div>
+    <p class="save">Setup is $1,000.<br>Today it is $500.</p>
+    <p><strong>50% off your one-time setup fee</strong> on any plan when you start this weekend or within 7 days, up to $1,250 back on the Growth plan.</p>
+    <p class="fine">Offer expires Friday, September 25, 2026. Monthly service price is unchanged.</p>
+  </div>
+
+  <div class="btns">
+    <a class="btn" href="tel:+18582186905" data-cta="call">Call (858) 218-6905</a>
+    <a class="btn alt" id="cta-text" href="sms:+18582186905?&body=Met%20you%20at%20the%20Adams%20Ave%20Street%20Fair%20-%20send%20me%20the%2010%20minute%20demo%20info" data-cta="text">Text me</a>
+    <a class="btn alt" href="mailto:kevin@smbaipartners.com?subject=Street%20Fair%20offer%20-%2010%20minute%20demo&body=Business%20name%3A%0ABest%20time%20to%20call%3A" data-cta="email">Email</a>
+  </div>
+
+  <p class="lede">Today you are surrounded by thousands of people. Most of them you will never see again. Sentext's Repeat Business Program gets them to opt in by text before they walk away, then brings them back on demand. No app to download, no ad spend, no hoping.</p>
+
+
+  <div class="offer" style="border-width:2px">
+    <p class="save" style="font-size:26px">The 3X ROI Guarantee</p>
+    <p>If the program does not generate at least three times what you pay for it, we keep working for free until it does. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" style="font-weight:400">Terms apply.</a> You own your customer list either way.</p>
   </div>
 
   <h2>Or use the table</h2>
@@ -215,6 +222,7 @@
   </footer>
 
 </div>
+<a class="btn sticky" id="cta-sticky-text" href="sms:+18582186905?&body=" data-cta="text_sticky">Text Kevin your numbers</a>
 <script>
 (function () {
   var VISITS = [0.5, 1, 2, 3];
@@ -235,8 +243,9 @@
     var m = c * t * v;
     $('out').textContent = money(m);
     $('sub').textContent = 'per month · ' + money(m * 12) + ' a year';
-    $('cta-text').href = 'sms:+18582186905?&body=' + encodeURIComponent('Met you at the Adams Ave Street Fair. I ran my numbers: ' +
+    var body = 'sms:+18582186905?&body=' + encodeURIComponent('Met you at the Adams Ave Street Fair. I ran my numbers: ' +
       c.toLocaleString('en-US') + ' customers x $' + t + ' x ' + v + ' extra visit' + (v === 1 ? '' : 's') + ' = ' + money(m) + '/mo. Send me the 10 minute demo info. My business is: ');
+    ['cta-text', 'cta-top-text', 'cta-sticky-text'].forEach(function (id) { var el = $(id); if (el) el.href = body; });
     return { list_size: c, avg_ticket: t, extra_visits: v, monthly_estimate: m };
   }
   var started = false;
