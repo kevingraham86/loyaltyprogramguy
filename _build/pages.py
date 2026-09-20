@@ -428,7 +428,7 @@ PAGES = [
 <h2>Information we collect</h2>
 <ul>
   <li><strong>Information you give us.</strong> If you fill out our form, we collect your name, business name, mobile phone number, email (optional), and the numbers you entered in our calculator. If you text, email, or book a call with us, we receive what you send.</li>
-  <li><strong>Usage information.</strong> We use Google Analytics and our own basic analytics to understand how visitors use the site, such as pages viewed, calculator use, button clicks, the link or code that brought you here, and your approximate country. We set cookies to count unique visitors and to show consistent page versions when we test changes.</li>
+  <li><strong>Usage information.</strong> We use Google Analytics and our own basic analytics to understand how visitors use the site, such as pages viewed, calculator use, button clicks, the link or code that brought you here, and your approximate country. We set cookies to count unique visitors and to show consistent page versions when we test changes. <strong>Google Analytics does not load until you accept it</strong> in the banner shown on your first visit; you can change your choice any time with the <strong>Your Privacy Choices</strong> link in the footer.</li>
   <li><strong>Security checks.</strong> Our form uses Cloudflare Turnstile to block spam and bots. Cloudflare processes technical signals from your browser for that purpose. We store a one-way hashed version of your IP address for up to a day's rate limiting, not your IP address itself.</li>
 </ul>
 
@@ -489,7 +489,7 @@ def footer():
     <a href="sms:{PHONE_E164}">Text {PHONE_DISPLAY}</a><br><a href="mailto:kevin@smbaipartners.com">kevin@smbaipartners.com</a></div>
   <div><strong>Industries</strong>{ind}</div>
   <div><strong>Guides</strong>{gd}<a href="/card/">Repeat-visit calculator</a></div>
-  <div><strong>Company</strong><a href="/">Home</a><br><a href="/about/">About Kevin</a><br><a href="/#guarantee">3x ROI Guarantee</a><br><a href="/privacy/">Privacy Policy</a><br><a href="https://www.smbaipartners.com/">SMB AI Partners</a><br>
+  <div><strong>Company</strong><a href="/">Home</a><br><a href="/about/">About Kevin</a><br><a href="/#guarantee">3x ROI Guarantee</a><br><a href="/privacy/">Privacy Policy</a><br><button type="button" data-privacy-choices class="linklike">Your Privacy Choices</button><br><a href="https://www.smbaipartners.com/">SMB AI Partners</a><br>
     <span>© <span class="yr">{date.today().year}</span></span></div>
 </div></footer>"""
 
@@ -572,16 +572,16 @@ def render(page, crumbs, body_html, answer_html=""):
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <meta name="theme-color" content="#1e3a8a" />
   <link rel="stylesheet" href="/css/pages.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>
+  <script src="/js/consent.js" defer></script>
   <script type="application/ld+json">
 {schema(page, url, crumbs)}
   </script>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 {header()}
 <nav class="crumbs" aria-label="Breadcrumb">{crumb_html}</nav>
-<article>
+<article id="main">
   <h1>{escape(page['h1'])}</h1>
   {byline}
   {answer_html}
@@ -667,8 +667,10 @@ def build_card():
     rep('<meta property="og:url" content="https://loyaltyprogramguy.com/" />',
         '<meta property="og:url" content="https://loyaltyprogramguy.com/card/" />')
     # canonical stays the homepage so Google treats /card/ as the same page, not a duplicate
-    rep("gtag('config', 'G-N7JTY70D7C');",
-        "gtag('config', 'G-N7JTY70D7C', { campaign_source: new URLSearchParams(location.search).get('src') || (location.pathname.match(/^\\/gycb(?:\\/([a-z0-9-]+))?/i) ? 'gycb' + (RegExp.$1 ? '-' + RegExp.$1.toLowerCase() : '') : 'card'), campaign_medium: 'offline', campaign_name: 'card-landing' });")
+    # campaign attribution for QR / card traffic: consent.js reads these when GA is allowed
+    rep('<script src="/js/consent.js" defer></script>',
+        "<script>window.LPG_GA_PARAMS = { campaign_source: new URLSearchParams(location.search).get('src') || (location.pathname.match(/^\\/gycb(?:\\/([a-z0-9-]+))?/i) ? 'gycb' + (RegExp.$1 ? '-' + RegExp.$1.toLowerCase() : '') : 'card'), campaign_medium: 'offline', campaign_name: 'card-landing' };</script>\n  "
+        + '<script src="/js/consent.js" defer></script>')
     # (the calculator is visible on every screen on the homepage too, so nothing to change here)
     rep("const CALC_LOC = 'home_mobile';", "const CALC_LOC = 'card';")
     # Sentext logo, top right: inside the desktop nav, and beside the menu button on phones

@@ -62,6 +62,7 @@
 
     /* Mobile-first repeat-visit calculator (QR code visitors land here) */
     .calc > * { max-width: 560px; margin-left: auto; margin-right: auto; }
+    .desk-only, .calc .btn.desk-only, .calc .or.desk-only { display: none; }
     @media all {
       .calc { display: block; background: #f3f4f6; padding: 20px 18px 28px; }
       .calc h2 { font-size: 28px; line-height: 1.15; font-weight: 800; margin: 0 0 8px; color: #111827; }
@@ -98,12 +99,33 @@
       .calc .lead button:disabled { opacity: .6; }
       .calc .lead .form-msg { font-size: 14px; color: #b91c1c; margin: 8px 0 0; min-height: 1em; }
     }
+    /* Desktop: compact landscape layout - sliders left, the number and buttons right */
+    @media (min-width: 768px) {
+      .calc { padding: 26px 24px 30px; }
+      .calc > * { max-width: 1040px; }
+      .calc h2 { font-size: 34px; text-align: center; margin-bottom: 6px; }
+      .calc .lede { text-align: center; font-size: 17px; margin-bottom: 18px; }
+      .calc .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; max-width: 1040px; margin: 0 auto; }
+      .calc .calc-grid > * { max-width: none; }
+      .calc .sliders { margin-bottom: 0; padding: 22px 24px; }
+      .calc .row { margin-bottom: 22px; }
+      .calc .pitch { display: flex; flex-direction: column; }
+      .calc .pitch .box.result { margin-bottom: 12px; }
+      .calc .big { font-size: 40px; }
+      .calc .btn { margin-top: 8px; }
+      .calc .btn.desk-only, .calc .or.desk-only { display: block; }
+      .calc .or.desk-only { text-align: center; font-size: 14px; margin: 10px 0 0; }
+      .calc .or.desk-only a { color: #1e3a8a; font-weight: 600; text-decoration: underline; }
+      /* texting and the SMS lead form are phone behaviours; desktop books instead */
+      .calc #cta-calc-text, .calc .or:not(.desk-only), .calc #lead-form, .calc .more { display: none; }
+    }
     /* Short phone screens (iPhone SE): keep sliders + result above the fold (LANDING_PAGES.md) */
     @media (max-height: 740px) and (max-width: 500px) {
-      .calc { padding: 12px 16px 20px; }
+      .calc { padding: 10px 16px 18px; }
       .calc h2 { font-size: 22px; margin-bottom: 4px; }
-      .calc .lede { font-size: 15px; margin-bottom: 10px; }
-      .calc .box { padding: 12px 14px; margin-bottom: 10px; }
+      .calc .lede { font-size: 15px; margin-bottom: 6px; }
+      .calc .box { padding: 11px 14px; margin-bottom: 6px; }
+      .calc h2 { margin-bottom: 2px; }
       .calc .row { margin-bottom: 8px; }
       .calc label { font-size: 15px; }
       .calc output { font-size: 19px; }
@@ -116,14 +138,8 @@
   </style>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7JTY70D7C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-N7JTY70D7C', { campaign_source: new URLSearchParams(location.search).get('src') || (location.pathname.match(/^\/gycb(?:\/([a-z0-9-]+))?/i) ? 'gycb' + (RegExp.$1 ? '-' + RegExp.$1.toLowerCase() : '') : 'card'), campaign_medium: 'offline', campaign_name: 'card-landing' });
-</script>
+  <script>window.LPG_GA_PARAMS = { campaign_source: new URLSearchParams(location.search).get('src') || (location.pathname.match(/^\/gycb(?:\/([a-z0-9-]+))?/i) ? 'gycb' + (RegExp.$1 ? '-' + RegExp.$1.toLowerCase() : '') : 'card'), campaign_medium: 'offline', campaign_name: 'card-landing' };</script>
+  <script src="/js/consent.js" defer></script>
   
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -195,6 +211,7 @@
   </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
+<a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- Sticky Header -->
   <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
@@ -230,12 +247,13 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <!-- Mobile-only calculator: first thing phone visitors (postcard QR scans) see -->
     <section id="calculator" class="calc" aria-label="Repeat visit calculator">
       <h2>What's <em>one extra visit</em> worth to you?</h2>
       <p class="lede">Drag the sliders to match your business.</p>
-      <div class="box">
+      <div class="calc-grid">
+      <div class="box sliders">
         <div class="row">
           <label for="calc-customers">Customers on your list <output id="calc-customers-out"></output></label>
           <input id="calc-customers" type="range" min="50" max="3000" step="50" value="1000">
@@ -249,6 +267,7 @@
           <input id="calc-visits" type="range" min="0" max="3" step="1" value="1">
         </div>
       </div>
+      <div class="pitch">
       <div class="box result" aria-live="polite">
         <p>Potential added revenue</p>
         <div class="big" id="calc-monthly"></div>
@@ -257,8 +276,10 @@
         <div class="fine"><span class="fine-long">An estimate, not a promise. But our <a href="/#guarantee" style="color:#fff;text-decoration:underline">3x ROI Guarantee</a> is! Connect with Kevin for more details. Results depend on your list size, offers, and how actively your staff invites customers to join.</span><span class="fine-short">An estimate. Our <a href="/#guarantee" style="color:#fff;text-decoration:underline">3x ROI Guarantee</a> is not.</span></div>
       </div>
       <a class="btn primary" id="cta-calc-book" href="https://calendly.com/smbaipartners" data-calc-cta="book" data-ab="calc_cta">Book my free 15-min walkthrough</a>
+      <a class="btn secondary desk-only" href="#top" data-calc-cta="explore">See how it works</a>
       <a class="btn secondary" id="cta-calc-text" href="sms:+18582186905?&body=Hi%20Kevin%2C%20I%20ran%20the%20numbers%20on%20your%20site.%20My%20business%20is%3A%20" data-calc-cta="text">Text Kevin: 858-218-6905</a>
       <p class="or">or have Kevin text you</p>
+      <p class="or desk-only">Prefer a text? <a href="sms:+18582186905" data-calc-cta="text_desktop">858-218-6905</a></p>
       <form id="lead-form" class="box lead" novalidate>
         <h3>Get this breakdown by text</h3>
         <p class="sub">Kevin will text you your numbers and one idea to get there. No spam.</p>
@@ -273,6 +294,8 @@
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
       <a class="more" href="#top">See how it works ↓</a>
+      </div>
+      </div>
     </section>
 
     <!-- Hero Section -->
@@ -578,6 +601,7 @@
         <a href="/guides/" class="inline-block py-3 text-gray-300 hover:text-white transition">Guides</a>
         <a href="/about/" class="inline-block py-3 text-gray-300 hover:text-white transition">About</a>
         <a href="/privacy/" class="inline-block py-3 text-gray-300 hover:text-white transition">Privacy</a>
+        <button type="button" data-privacy-choices class="inline-block py-3 text-gray-300 hover:text-white transition underline bg-transparent border-0 cursor-pointer">Your Privacy Choices</button>
         <a href="#who" class="inline-block py-3 text-gray-300 hover:text-white transition">Who We Help</a>
         <a href="#how" class="inline-block py-3 text-gray-300 hover:text-white transition">How It Works</a>
         <a href="#features" class="inline-block py-3 text-gray-300 hover:text-white transition">Features</a>
