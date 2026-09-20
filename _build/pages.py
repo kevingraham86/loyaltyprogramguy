@@ -669,9 +669,7 @@ def build_card():
     # canonical stays the homepage so Google treats /card/ as the same page, not a duplicate
     rep("gtag('config', 'G-N7JTY70D7C');",
         "gtag('config', 'G-N7JTY70D7C', { campaign_source: new URLSearchParams(location.search).get('src') || (location.pathname.match(/^\\/gycb(?:\\/([a-z0-9-]+))?/i) ? 'gycb' + (RegExp.$1 ? '-' + RegExp.$1.toLowerCase() : '') : 'card'), campaign_medium: 'offline', campaign_name: 'card-landing' });")
-    # calculator visible on all screens, centered on desktop
-    rep("    .calc { display: none; }\n    @media (max-width: 767px) {",
-        "    .calc > * { max-width: 560px; margin-left: auto; margin-right: auto; }\n    @media all {")
+    # (the calculator is visible on every screen on the homepage too, so nothing to change here)
     rep("const CALC_LOC = 'home_mobile';", "const CALC_LOC = 'card';")
     # Sentext logo, top right: inside the desktop nav, and beside the menu button on phones
     logo = '<img src="/images/sentext-logo.png" width="{w}" height="120" alt="Sentext Solutions logo" class="{cls}">'
