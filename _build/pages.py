@@ -673,14 +673,7 @@ def build_card():
         + '<script src="/js/consent.js" defer></script>')
     # (the calculator is visible on every screen on the homepage too, so nothing to change here)
     rep("const CALC_LOC = 'home_mobile';", "const CALC_LOC = 'card';")
-    # Sentext logo, top right: inside the desktop nav, and beside the menu button on phones
-    logo = '<img src="/images/sentext-logo.png" width="{w}" height="120" alt="Sentext Solutions logo" class="{cls}">'
-    from PIL import Image
-    w = Image.open("images/sentext-logo.png").width
-    rep('Schedule a Demo</a>\n      </nav>',
-        'Schedule a Demo</a>\n        ' + logo.format(w=w, cls="h-10 w-auto") + '\n      </nav>')
-    rep('      <button id="menu-toggle"',
-        '      ' + logo.format(w=w, cls="md:hidden ml-auto mr-2 h-9 w-auto") + '\n      <button id="menu-toggle"')
+    # (the Sentext logo is in index.html now, so the card copy inherits it)
     write("card/index.html", h)
     print("built card/index.html from index.html")
 

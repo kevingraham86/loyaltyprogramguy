@@ -94,7 +94,7 @@ async function handleGo(request, env, ctx, code) {
   const dest = new URL("/card/", request.url);
   if (SHORT_CODE.test(code)) {
     dest.searchParams.set("src", code);
-    ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `/go/${code}`, is_bot: isBot(request) }));
+    ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `/go/${code}`, is_bot: isBot(request, url) }));
   }
   return new Response(null, { status: 302, headers: { Location: dest.toString(), "Cache-Control": "no-store" } });
 }
@@ -107,7 +107,7 @@ function handleVanity(request, ctx, env, url, prefix) {
   // After the offer ends (Sept 25) set VANITY_ROOT back to `/${prefix}`.
   const VANITY_ROOT = "/adamsave?src=gycb";
   const dest = new URL(seg ? `https://loyaltyprogramguy.com/${prefix}/${seg.slice(0, 30)}` : `https://loyaltyprogramguy.com${VANITY_ROOT}`);
-  ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `${url.hostname}${url.pathname}`.slice(0, 100), is_bot: isBot(request) }));
+  ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `${url.hostname}${url.pathname}`.slice(0, 100), is_bot: isBot(request, url) }));
   return new Response(null, { status: 302, headers: { Location: dest.toString(), "Cache-Control": "no-store" } });
 }
 
@@ -126,7 +126,7 @@ async function handleEvent(request, env) {
     source: str(body.source, 40),
     path: str(body.path, 100),
     visitor_id: cookies.lpg_vid || null,
-    is_bot: isBot(request),
+    is_bot: isBot(request, url),
     detail: body.detail ? JSON.stringify(body.detail).slice(0, 500) : null,
   });
   return json({ ok: true });
@@ -221,11 +221,19 @@ async function logEvent(env, request, e) {
   } catch (err) { console.error("logEvent failed", err); }
 }
 
-function isBot(request) {
+// Scanners hammer new domains (2,190 hits in 3 days looking for /wp-admin, /.env, /.git ...).
+// Anything matching these is never a customer.
+const SCANNER_PATH = /wp-admin|wp-login|wp-content|wp-includes|xmlrpc|\.php|\.env|\.git|\.aws|phpmyadmin|myadmin|cgi-bin|vendor\/|autodiscover|owa\/|\.well-known\/traffic|config\.json|backup|shell|eval-stdin/i;
+
+function isBot(request, url) {
   const ua = (request.headers.get("user-agent") || "").toLowerCase();
   const score = request.cf && request.cf.botManagement && request.cf.botManagement.score;
   if (typeof score === "number" && score < 30) return true;
-  return !ua || /bot|crawl|spider|slurp|headless|python|curl|wget|httpclient|scan|monitor|preview|facebookexternalhit/.test(ua);
+  if (!ua || /bot|crawl|spider|slurp|headless|python|curl|wget|httpclient|scan|monitor|preview|facebookexternalhit/.test(ua)) return true;
+  // Real browsers send these; most scanners do not.
+  if (!request.headers.get("accept-language") || !request.headers.get("sec-fetch-dest")) return true;
+  const path = url ? url.pathname : new URL(request.url).pathname;
+  return SCANNER_PATH.test(path);
 }
 
 function sameOrigin(request) {
