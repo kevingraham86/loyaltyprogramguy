@@ -60,6 +60,16 @@
   .more { display: block; text-align: center; font-size: 15px; margin-top: 14px; color: var(--muted); text-decoration: none; }
   .slide.dark .more { color: #b9c5e0; }
 
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  .stat { background: var(--navy-2); border: 1px solid #2a3c6b; border-radius: 14px; padding: 12px; }
+  .stat b { display: block; font-size: 28px; line-height: 1.05; color: #ffd479; letter-spacing: -.02em; }
+  .stat span { font-size: 13px; color: #cfe0ff; }
+  .pain { font-size: 19px; font-weight: 700; }
+  .ways { display: grid; gap: 8px; }
+  .way { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
+  .way i { font-style: normal; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; }
+  .way p { margin: 0; font-size: 15px; }
+  @media (min-width: 820px) { .stats { grid-template-columns: repeat(4, 1fr); } .ways { grid-template-columns: 1fr 1fr; gap: 10px 26px; } }
   .bench { display: grid; gap: 10px; }
   .bar { background: #eef1f7; border-radius: 10px; overflow: hidden; height: 34px; position: relative; }
   .bar span { position: absolute; inset: 0 auto 0 0; display: flex; align-items: center; padding-left: 10px;
@@ -115,7 +125,39 @@
   </div>
 </section>
 
-<!-- 2. Move the slider: your own numbers -->
+
+<!-- 2. The problem -->
+<section class="slide" id="problem">
+  <div class="inner">
+    <p class="kicker">The problem</p>
+    <h2>You have regulars. You're still waiting and hoping.</h2>
+    <p class="pain">Tonight, 2,000 guests will decide where to eat. You have no way to reach the ones who already love your food.</p>
+    <p>A punch card or a points app only works when the guest decides to walk in on their own. When a Tuesday is slow, when a new spot opens down the street, when someone hasn't been in for two months, there is nothing you can do about it. Every guest who does not come back is revenue you already paid to earn.</p>
+    <div class="card">
+      <p style="margin:0"><strong>Hope is not a strategy.</strong> The guests who already like you are the cheapest revenue in your business, and right now you cannot reach a single one of them.</p>
+    </div>
+    <a class="more" href="#why">Why it matters &darr;</a>
+  </div>
+</section>
+
+<!-- 3. Why returning guests matter -->
+<section class="slide dark" id="why">
+  <div class="inner">
+    <p class="kicker">Why returning guests matter</p>
+    <h2>Your most valuable asset is the guest you already won.</h2>
+    <div class="stats">
+      <div class="stat"><b>5-25x</b><span>more to win a new customer than to keep one you have</span></div>
+      <div class="stat"><b>25-95%</b><span>profit increase from just 5% better retention</span></div>
+      <div class="stat"><b>60-70%</b><span>chance of selling to an existing customer, vs 5-20% for a new one</span></div>
+      <div class="stat"><b>18%</b><span>of companies actually focus on retention</span></div>
+    </div>
+    <p>Keep chasing new guests. Just make sure the ones you win keep coming back, because that is where the margin is.</p>
+    <p class="note">Sources: Harvard Business Review; Bain &amp; Company; Marketing Metrics (Farris et al.); Invesp.</p>
+    <a class="more" href="#numbers">What that is worth to Mainstream &darr;</a>
+  </div>
+</section>
+
+<!-- 4. Move the slider: your own numbers -->
 <section class="slide" id="numbers">
   <div class="inner">
     <p class="kicker">Your numbers, not ours</p>
@@ -165,30 +207,30 @@
   </div>
 </section>
 
-<!-- 4. How it runs -->
+<!-- 6. The 7 ways -->
 <section class="slide" id="how">
   <div class="inner">
-    <p class="kicker">How it runs</p>
-    <h2>Guests opt in at your counter. The rest is automatic.</h2>
-    <div class="two">
-      <ul class="list">
-        <li><strong>Bounce-back offer</strong> right after a first visit</li>
-        <li><strong>"We miss you"</strong> when a regular goes quiet</li>
-        <li><strong>Digital punch card</strong> that rewards the habit</li>
-        <li><strong>Birthday and anniversary</strong> rewards</li>
-        <li><strong>Review requests</strong> after a repeat visit</li>
-        <li><strong>On-demand blasts</strong> for a slow Tuesday</li>
-      </ul>
-      <div class="card">
-        <p style="margin:0 0 6px"><strong>What you do:</strong> tell guests about it. That's it.</p>
-        <p class="sub muted" style="margin:0">I install the kiosk and signage on site, train your staff, write the campaigns, and review the numbers with you every month. You own the guest list.</p>
-      </div>
+    <p class="kicker">How you take control</p>
+    <h2>Seven ways to bring them back, running without you.</h2>
+    <p class="muted" style="font-size:15px">Guests opt in at your counter. From there it runs on its own, and you can text the whole list any time you want.</p>
+    <div class="ways">
+      <div class="way"><i>01</i><p><strong>Welcome offer.</strong> A strong offer the moment they join.</p></div>
+      <div class="way"><i>02</i><p><strong>Bounce-back offers.</strong> Three hours after joining, then every 30 days for a year.</p></div>
+      <div class="way"><i>03</i><p><strong>Punch card rewards.</strong> A digital card that pays them for coming back.</p></div>
+      <div class="way"><i>04</i><p><strong>Birthday reward.</strong> A personal offer on every member's birthday.</p></div>
+      <div class="way"><i>05</i><p><strong>Anniversary reward.</strong> An offer on the date they joined.</p></div>
+      <div class="way"><i>06</i><p><strong>We miss you.</strong> Offers grow from 5% to 35% the longer a guest stays away.</p></div>
+      <div class="way"><i>07</i><p><strong>Manual texting, anytime.</strong> Slow Tuesday, new menu item, live music. Text the list in seconds.</p></div>
+    </div>
+    <div class="card">
+      <p style="margin:0 0 6px"><strong>What you do:</strong> tell guests about it. That's it.</p>
+      <p class="sub muted" style="margin:0">I install the kiosk and signage on site, train your staff, write the campaigns, and review the numbers with you every month. You own the guest list.</p>
     </div>
     <a class="more" href="#cost">What it costs &darr;</a>
   </div>
 </section>
 
-<!-- 5. Cost vs return -->
+<!-- 7. Cost vs return -->
 <section class="slide dark" id="cost">
   <div class="inner">
     <p class="kicker">The investment</p>
@@ -208,7 +250,7 @@
   </div>
 </section>
 
-<!-- 6. Next step -->
+<!-- 8. Next step -->
 <section class="slide" id="next">
   <div class="inner">
     <p class="kicker">Next step</p>
