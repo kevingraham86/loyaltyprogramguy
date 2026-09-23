@@ -31,6 +31,9 @@ export default {
       if (path.startsWith("/go/")) return await handleGo(request, env, ctx, path.slice(4).replace(/\/$/, ""));
       if (path === "/admin" || path.startsWith("/admin/")) return await renderAdmin(request, env);
       if (path === "/" || path === "/card/") return await servePage(request, env, ctx, url);
+      if (path === "/mainstream" || path === "/mainstream/") {
+        return await servePage(request, env, ctx, url, { assetPath: "/mainstream/", source: url.searchParams.get("src") || "mainstream" });
+      }
       if (path === "/offer" || path === "/offer/") {
         return await servePage(request, env, ctx, url, { assetPath: "/offer/", source: url.searchParams.get("src") || "offer" });
       }
@@ -101,7 +104,7 @@ async function handleGo(request, env, ctx, code) {
   const dest = new URL("/card/", request.url);
   if (SHORT_CODE.test(code)) {
     dest.searchParams.set("src", code);
-    ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `/go/${code}`, is_bot: isBot(request, url) }));
+    ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `/go/${code}`, is_bot: isBot(request, new URL(request.url)) }));
   }
   return new Response(null, { status: 302, headers: { Location: dest.toString(), "Cache-Control": "no-store" } });
 }
@@ -119,6 +122,7 @@ function handleVanity(request, ctx, env, url, prefix) {
 
 // ---------------------------------------------------------------- /api/event
 async function handleEvent(request, env) {
+  const url = new URL(request.url);
   if (request.method !== "POST") return json({ ok: false }, 405);
   if (!sameOrigin(request)) return json({ ok: false }, 403);
   const body = await readJson(request, 4000);
