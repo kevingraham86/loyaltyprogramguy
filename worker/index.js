@@ -31,7 +31,14 @@ export default {
       if (path.startsWith("/go/")) return await handleGo(request, env, ctx, path.slice(4).replace(/\/$/, ""));
       if (path === "/admin" || path.startsWith("/admin/")) return await renderAdmin(request, env);
       if (path === "/" || path === "/card/") return await servePage(request, env, ctx, url);
+      if (path === "/offer" || path === "/offer/") {
+        return await servePage(request, env, ctx, url, { assetPath: "/offer/", source: url.searchParams.get("src") || "offer" });
+      }
       if (path === "/adamsave" || path === "/adamsave/") {
+        // The street fair offer ends Fri Sept 25 2026 (midnight PT); after that, send people to the evergreen page.
+        if (Date.now() > Date.parse("2026-09-26T07:00:00Z")) {
+          return Response.redirect(new URL("/offer?src=adamsave", url).toString(), 302);
+        }
         return await servePage(request, env, ctx, url, { assetPath: "/adamsave/", source: url.searchParams.get("src") || "adamsave" });
       }
       const landing = path.match(/^\/gycb(?:\/([a-z0-9-]{1,30}))?\/?$/i);
@@ -103,9 +110,8 @@ async function handleGo(request, env, ctx, code) {
 function handleVanity(request, ctx, env, url, prefix) {
   const seg = (url.pathname.split("/").filter(Boolean)[0] || "").toLowerCase().replace(/[^a-z0-9-]/g, "");
   const code = (seg ? `${prefix}-${seg}` : prefix).slice(0, 40);
-  // TEMPORARY (Adams Ave Street Fair, Sept 19-20 2026): bare domain goes to the fair page.
-  // After the offer ends (Sept 25) set VANITY_ROOT back to `/${prefix}`.
-  const VANITY_ROOT = "/adamsave?src=gycb";
+  // Bare getyourcustomersback.com -> the evergreen offer page.
+  const VANITY_ROOT = "/offer?src=gycb";
   const dest = new URL(seg ? `https://loyaltyprogramguy.com/${prefix}/${seg.slice(0, 30)}` : `https://loyaltyprogramguy.com${VANITY_ROOT}`);
   ctx.waitUntil(logEvent(env, request, { type: "short_link", source: code, path: `${url.hostname}${url.pathname}`.slice(0, 100), is_bot: isBot(request, url) }));
   return new Response(null, { status: 302, headers: { Location: dest.toString(), "Cache-Control": "no-store" } });
