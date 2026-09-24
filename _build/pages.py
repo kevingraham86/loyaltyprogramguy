@@ -369,6 +369,89 @@ PAGES = [
     },
     # ---------------------------------------------------------------- about
     {
+        "path": "guides/sms-marketing-compliance/",
+        "kind": "guide",
+        "nav": "Is text marketing legal?",
+        "title": "Is Text Message Marketing Legal? SMS Rules for Small Business (2026)",
+        "h1": "Is Text Message Marketing Legal? The Rules, in Plain English",
+        "description": "The TCPA, CTIA and 10DLC rules a local business has to follow to text its customers: what counts as consent, what your sign-up must say, quiet hours, opt-outs, and the penalties for getting it wrong.",
+        "answer": "Yes, texting your customers is legal, as long as each person gave you prior express written consent to receive marketing texts, your sign-up clearly says who you are and how to stop, you only send between 8 a.m. and 9 p.m. in their local time, and you honor an opt-out through any reasonable method within 10 business days. Penalties run $500 to $1,500 per message, so the consent record is the part that matters most.",
+        "body": """
+<p>Most owners I meet want a text program and are quietly afraid of it. They have heard there are rules, they do not know what the rules are, and the safest-feeling choice is to do nothing. That fear costs far more than compliance does, because the rules are not complicated once someone lays them out.</p>
+<p>Here they are, in order of how much trouble they can cause you.</p>
+
+<h2>Three sets of rules, not one</h2>
+<p>People say "the TCPA" as if it were the only thing to follow. There are three layers, and they are enforced by different people:</p>
+<ul>
+  <li><strong>The TCPA</strong> is the federal law. Consumers sue under it, usually as class actions, and damages are $500 to $1,500 per message.</li>
+  <li><strong>The CTIA guidelines</strong> are the wireless industry's rules. Carriers enforce them, and they can shut your texting off without any regulator getting involved.</li>
+  <li><strong>10DLC registration</strong> is the carrier approval that lets your business number send at volume at all. Since 2021, unregistered business texting gets filtered or blocked.</li>
+</ul>
+<p>The practical order of risk is the reverse of what people expect. A lawsuit is the expensive tail risk. Getting your number suspended by a carrier is the thing that actually happens, and it happens quietly.</p>
+
+<h2>What counts as consent</h2>
+<p>Marketing texts require <strong>prior express written consent</strong>. That is a specific thing, and three common assumptions do not meet it:</p>
+<ul>
+  <li><strong>A phone number on a receipt or a reservation is not consent.</strong> Someone giving you their number for a booking has not agreed to marketing.</li>
+  <li><strong>A purchase is not consent,</strong> and you cannot make consent a condition of buying anything.</li>
+  <li><strong>A purchased list is never consent.</strong> If you did not collect it, you cannot text it. There is no version of this that is safe.</li>
+</ul>
+<p>What does count is a clear, affirmative action: checking an unchecked box, texting a keyword to join, or tapping to join on a kiosk at your counter, where the disclosure is on the screen in front of them. <strong>Keep the record.</strong> In a dispute, you are the one who has to prove consent existed, and the record is what does it.</p>
+
+<h2>What your sign-up has to say</h2>
+<p>Before someone joins, five things must be clear and conspicuous. Not buried, not in grey four-point type:</p>
+<ul>
+  <li><strong>Who is texting them.</strong> Your business name.</li>
+  <li><strong>What they will get,</strong> and roughly how often.</li>
+  <li><strong>"Msg &amp; data rates may apply."</strong></li>
+  <li><strong>How to get help.</strong> Reply HELP.</li>
+  <li><strong>How to stop.</strong> Reply STOP.</li>
+</ul>
+<p>It should also say consent is not a condition of purchase, and link to your terms and privacy policy. Here is the kind of line that satisfies it:</p>
+<div class="sms">Join Rosa's Cafe rewards. Up to 4 msgs/month. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. Consent is not a condition of purchase.</div>
+
+<h2>Quiet hours: 8 a.m. to 9 p.m., their time</h2>
+<p>No marketing texts before 8 a.m. or after 9 p.m. <strong>in the recipient's time zone, not yours.</strong> That last part catches people. A 8:30 p.m. blast from San Diego lands at 11:30 p.m. for a customer visiting family on the East Coast. Any decent platform handles this for you; if you are texting from your own phone, nothing does.</p>
+
+<h2>Opt-outs, which got stricter</h2>
+<p>You have to honor an opt-out sent by <strong>any reasonable method</strong>, and you have <strong>10 business days</strong> to process it. Since April 2025, you cannot insist on one magic word. Reasonable includes STOP, QUIT, END, CANCEL, UNSUBSCRIBE, REVOKE and OPT OUT, and it also includes a customer replying in plain language, or telling you by email, voicemail, or at your counter.</p>
+<p>That is the rule small businesses break most often, and almost never on purpose. Someone says "please stop texting me" to a staff member, nobody writes it down, and the next campaign goes out.</p>
+<p>One more piece is coming. The FCC's "revoke-all" provision, which would treat one opt-out as a request to stop nearly all automated messages from you, has been <strong>delayed to January 31, 2027</strong>. It is not in force yet. Plan for it, do not panic about it.</p>
+
+<h2>What getting it wrong costs</h2>
+<ul>
+  <li><strong>$500 per message,</strong> and up to $1,500 if the violation is willful. Per message, not per campaign. A careless send to 400 people is not a $500 problem.</li>
+  <li><strong>Class actions.</strong> Text cases are attractive to plaintiffs' firms precisely because the math multiplies so fast.</li>
+  <li><strong>Carrier suspension.</strong> The quiet one. Your messages stop being delivered and your program is dead until it is sorted out.</li>
+</ul>
+
+<h2>The seven-item checklist</h2>
+<ul>
+  <li>Every number on your list has a recorded, affirmative opt-in.</li>
+  <li>Your sign-up shows all five disclosures where people actually read them.</li>
+  <li>You are registered for 10DLC, or your provider registered you.</li>
+  <li>Nothing sends outside 8 a.m. to 9 p.m. in the customer's time zone.</li>
+  <li>STOP works automatically, and verbal or emailed opt-outs get entered the same day.</li>
+  <li>Your consent records are kept, with dates, and you could produce them.</li>
+  <li>Someone owns this. If it is nobody's job, it is not being done.</li>
+</ul>
+
+<h2>Why a managed program is usually the answer</h2>
+<p>Every item above is doable on your own. The problem is that compliance is not a one-time setup, it is a habit, and habits are what a busy counter loses first. The value of a real platform is that the rules are enforced by the software instead of by someone remembering: the kiosk shows the disclosure before it takes the number, opt-outs process themselves, quiet hours are built in, and the consent record exists whether or not anyone thought about it.</p>
+<p>That is what I set up for local businesses as an agent for Sentext Solutions' Repeat Business Program. Carrier registration is handled, the opt-in language and signage are done for you, and you still <strong>own your customer list</strong>. If you want to see what that list is worth first, <a href="/card/">run your own numbers</a>, or read <a href="/guides/sms-loyalty-program-cost/">what a program costs</a>.</p>
+<p class="note"><strong>One honest caveat:</strong> I sell and run text programs, I am not a lawyer, and this is general information rather than legal advice. The rules change, and they changed twice in the last two years. For your specific situation, talk to an attorney.</p>
+""",
+        "faqs": [
+            ("Can I text customers who gave me their number for a reservation or an order?", "Not for marketing. A number given for a booking, an order, or a receipt was given for that purpose. To send offers and rewards you need separate express written consent for marketing texts."),
+            ("Can I buy a list of local phone numbers and text them?", "No. Consent cannot be bought or transferred to you, and texting a purchased list is the fastest way to a TCPA claim and a suspended number."),
+            ("Does a customer have to reply exactly STOP to opt out?", "No, and this is the rule most businesses get wrong. Since April 2025 you must honor an opt-out made by any reasonable method, including plain language, email, voicemail, or a customer telling your staff in person, and you have 10 business days to process it."),
+            ("What are the SMS quiet hours?", "No marketing texts before 8 a.m. or after 9 p.m. in the recipient's local time zone, which is not necessarily yours."),
+            ("What is 10DLC and do I need it?", "10DLC is the carrier registration that allows a normal 10-digit business number to send business texts at volume. Without it your messages get filtered or blocked. A managed provider normally registers you."),
+            ("How much is the fine for a TCPA violation?", "Statutory damages run $500 per message, up to $1,500 if the violation was willful, plus the risk of a class action. Because it is charged per message, a single careless campaign can be very expensive."),
+            ("Is this legal advice?", "No. I run text programs for local businesses and this is general information. Rules change, so check your specific situation with an attorney."),
+        ],
+    },
+    {
         "path": "about/",
         "kind": "about",
         "nav": "About",
