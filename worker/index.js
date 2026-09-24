@@ -44,6 +44,13 @@ export default {
         }
         return await servePage(request, env, ctx, url, { assetPath: "/adamsave/", source: url.searchParams.get("src") || "adamsave" });
       }
+      // Instagram traffic: /insta, or /insta/<tag> to track a single post, reel or story.
+      //   /insta -> source "insta"      /insta/reel-sept -> source "insta-reel-sept"
+      const insta = path.match(/^\/insta(?:\/([a-z0-9-]{1,30}))?\/?$/i);
+      if (insta) {
+        const source = insta[1] ? `insta-${insta[1].toLowerCase()}` : "insta";
+        return await servePage(request, env, ctx, url, { assetPath: "/offer/", source, eyebrow: "Straight from Instagram \u00b7 Repeat Business Program" });
+      }
       const landing = path.match(/^\/gycb(?:\/([a-z0-9-]{1,30}))?\/?$/i);
       if (landing) {
         const source = landing[1] ? `gycb-${landing[1].toLowerCase()}` : "gycb";
@@ -60,6 +67,7 @@ export default {
 
 // ---------------------------------------------------------------- pages + A/B
 // opts.assetPath: serve a different asset (e.g. /gycb serves /card/); opts.source: tracking source for landing paths
+// opts.eyebrow: replace the page's small line above the headline (says where the visitor came from)
 async function servePage(request, env, ctx, url, opts = {}) {
   const res = await env.ASSETS.fetch(opts.assetPath ? new Request(new URL(opts.assetPath, url), request) : request);
   const type = res.headers.get("content-type") || "";
@@ -87,6 +95,7 @@ async function servePage(request, env, ctx, url, opts = {}) {
   const v = exp.variants[variant];
   const rewritten = new HTMLRewriter()
     .on(`[data-ab="${exp.id}"]`, { element(el) { el.setInnerContent(v.text); el.setAttribute("data-variant", variant); } })
+    .on(".eyebrow", { element(el) { if (opts.eyebrow) el.setInnerContent(opts.eyebrow); } })
     .on("[data-turnstile-sitekey]", { element(el) { el.setAttribute("data-sitekey", env.TURNSTILE_SITEKEY || ""); } })
     .on("body", { element(el) { el.setAttribute("data-vid", vid); el.setAttribute(`data-ab-${exp.id}`, variant); if (opts.source) el.setAttribute("data-src", opts.source); } })
     .transform(res);
