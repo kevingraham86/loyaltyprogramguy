@@ -42,6 +42,12 @@
   .brandbar img { height: 30px; width: auto; }
   .brandbar .x { color: var(--muted); font-weight: 800; }
 
+  .guarantee { border: 2px solid #ffd479; border-radius: 16px; padding: 22px 20px; margin: 22px 0 10px;
+               background: rgba(255,212,121,.07); text-align: center; }
+  .guarantee .g-kicker { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #ffd479; font-weight: 700; margin: 0 0 6px; }
+  .guarantee h3 { font-size: clamp(30px, 8vw, 44px); line-height: 1.05; letter-spacing: -.02em; margin: 0 0 10px; color: #ffd479; }
+  .guarantee p.g-body { font-size: 18px; line-height: 1.5; margin: 0 auto; max-width: 30em; }
+  .guarantee p.g-fine { font-size: 13px; margin: 10px 0 0; opacity: .75; }
   .card { background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin: 10px 0; }
   .slide.dark .card { background: var(--navy-2); border-color: #2a3c6b; color: #fff; }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-weight: 600; }
@@ -253,9 +259,11 @@
       <div class="way"><i>&#9632;</i><p><strong>Carrier registration handled.</strong> The compliance paperwork that lets a business text legally is done for you.</p></div>
       <div class="way"><i>&#9632;</i><p><strong>You own the list.</strong> Every guest who opts in is yours, and it stays yours.</p></div>
     </div>
-    <div class="card">
-      <p style="margin:0 0 4px"><strong>The 3x ROI Guarantee.</strong></p>
-      <p class="sub" style="margin:0">If the program does not return at least three times what you put into it in the first 12 months, we keep working for free until it does. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" style="color:#ffd479">Terms apply.</a></p>
+    <div class="guarantee">
+      <p class="g-kicker">My promise to you</p>
+      <h3>The 3x ROI Guarantee</h3>
+      <p class="g-body">If the program does not return at least <strong>three times</strong> what you put into it in the first 12 months, <strong>I keep working for free until it does.</strong></p>
+      <p class="g-fine"><a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" style="color:#ffd479">Terms apply.</a> You own your guest list either way.</p>
     </div>
     <a class="more" href="#next">Next step &darr;</a>
   </div>
@@ -271,6 +279,7 @@
       <a class="btn" id="cta-bottom" href="sms:+18582186905?&body=Kevin%2C%20this%20is%20Hakumaru.%20Let%27s%20talk%20about%20the%20repeat%20customer%20plan." data-cta="text_bottom">Text Kevin: 858-218-6905</a>
       <a class="btn alt" href="https://calendly.com/smbaipartners" data-cta="book">Book a 10-minute walkthrough</a>
     </div>
+    <p style="font-size:17px;margin-top:16px">Let me know when a good day works. Happy to stop by between 3 and 5, after your lunch service, when you have 15 minutes to review everything.</p>
     <p class="note muted" style="margin-top:12px">Kevin Graham &middot; SMB AI Partners LLC &middot; authorized Sentext Solutions agent &middot; Poway, CA</p>
   </div>
 </section>
