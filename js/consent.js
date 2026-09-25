@@ -50,8 +50,11 @@
       if (choice === 'accepted') loadGA();
     });
     document.body.appendChild(banner);
-    var accept = banner.querySelector('[data-consent="accepted"]');
-    if (accept) accept.focus();
+    // Do NOT focus the Accept button. This banner is static at the END of the document,
+    // not a modal overlay, so focusing it scrolls the visitor to the bottom of the page
+    // and they never see the hero. (Caught 2026-09-24 on /hakumaru: fresh loads landed at
+    // 3044px of 3812.) Keyboard users reach it in normal document order, which is correct
+    // for a non-modal element.
   }
 
   function init() {
