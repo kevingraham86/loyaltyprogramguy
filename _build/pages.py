@@ -558,6 +558,16 @@ PAGES = [
     },
 ]
 
+# Guides from the weekly guide pipeline (SMB AI Backend/sales-os/guidegen.py) live as JSON in _build/guides/,
+# so publishing a new guide never means hand-editing this file.
+import glob as _glob
+for _f in sorted(_glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "guides", "*.json"))):
+    with open(_f) as _fh:
+        _g = json.load(_fh)
+    _g["faqs"] = [tuple(x) for x in _g.get("faqs", [])]
+    if not any(x["path"] == _g["path"] for x in PAGES):
+        PAGES.append(_g)
+
 GUIDES = [p for p in PAGES if p["kind"] == "guide"]
 INDUSTRIES = [p for p in PAGES if p["kind"] == "industry"]
 
