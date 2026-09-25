@@ -79,3 +79,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .consent-btn{border-radius:8px;padding:12px 20px;font-weight:700;font-size:15px;cursor:pointer}
 .consent-btn.solid{background:#2563eb;color:#fff;border:0}
 .consent-btn.ghost{background:transparent;color:#fff;border:2px solid #9ca3af}
+.related { margin-top:36px; }
+.related h2 { margin-bottom:4px; }
+.related .cards a strong { font-size:16px; line-height:1.3; }
+.related .cards a { font-size:14px; }

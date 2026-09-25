@@ -40,6 +40,7 @@ PAGES = [
     # ---------------------------------------------------------------- industries
     {
         "path": "restaurants/",
+        "related": ['salons/', 'retail/', 'guides/how-to-get-repeat-customers/', 'guides/win-back-text-examples/'],
         "kind": "industry",
         "nav": "Restaurants",
         "title": "Text Loyalty Programs for Restaurants | San Diego",
@@ -86,6 +87,7 @@ PAGES = [
     },
     {
         "path": "salons/",
+        "related": ['restaurants/', 'retail/', 'guides/win-back-text-examples/', 'guides/sms-loyalty-program-cost/'],
         "kind": "industry",
         "nav": "Salons & Spas",
         "title": "Text Loyalty Programs for Salons & Spas | San Diego",
@@ -132,6 +134,7 @@ PAGES = [
     },
     {
         "path": "retail/",
+        "related": ['restaurants/', 'salons/', 'guides/punch-card-vs-text-loyalty-program/', 'guides/how-to-get-repeat-customers/'],
         "kind": "industry",
         "nav": "Retail",
         "title": "Text Loyalty Programs for Retail Shops | San Diego",
@@ -179,6 +182,7 @@ PAGES = [
     # ---------------------------------------------------------------- guides
     {
         "path": "guides/how-to-get-repeat-customers/",
+        "related": ['guides/win-back-text-examples/', 'guides/punch-card-vs-text-loyalty-program/', 'restaurants/'],
         "kind": "guide",
         "nav": "How to get repeat customers",
         "title": "How to Get More Repeat Customers: 9 Ways That Work",
@@ -227,6 +231,7 @@ PAGES = [
     },
     {
         "path": "guides/punch-card-vs-text-loyalty-program/",
+        "related": ['guides/sms-loyalty-program-cost/', 'guides/how-to-get-repeat-customers/', 'retail/'],
         "kind": "guide",
         "nav": "Punch card vs. text loyalty",
         "title": "Punch Card vs. Text Loyalty Program: Which Is Better?",
@@ -268,6 +273,7 @@ PAGES = [
     },
     {
         "path": "guides/sms-loyalty-program-cost/",
+        "related": ['guides/sms-marketing-compliance/', 'guides/punch-card-vs-text-loyalty-program/', 'salons/'],
         "kind": "guide",
         "nav": "What does it cost?",
         "title": "How Much Does an SMS Loyalty Program Cost? (2026 Guide)",
@@ -311,6 +317,7 @@ PAGES = [
     },
     {
         "path": "guides/win-back-text-examples/",
+        "related": ['guides/sms-marketing-compliance/', 'guides/how-to-get-repeat-customers/', 'restaurants/'],
         "kind": "guide",
         "nav": "Win-back text examples",
         "title": "Win-Back Text Message Examples for Local Businesses",
@@ -370,6 +377,7 @@ PAGES = [
     # ---------------------------------------------------------------- about
     {
         "path": "guides/sms-marketing-compliance/",
+        "related": ['guides/sms-loyalty-program-cost/', 'guides/win-back-text-examples/', 'restaurants/'],
         "kind": "guide",
         "nav": "Is text marketing legal?",
         "title": "Is Text Message Marketing Legal? SMS Rules for Small Business (2026)",
@@ -453,6 +461,7 @@ PAGES = [
     },
     {
         "path": "about/",
+        "related": ['guides/how-to-get-repeat-customers/', 'restaurants/', 'guides/sms-marketing-compliance/'],
         "kind": "about",
         "nav": "About",
         "title": "About Kevin Graham, the Loyalty Program Guy",
@@ -589,6 +598,21 @@ def cta():
 </section>"""
 
 
+def related_html(page):
+    """Internal links between pages. Orphan pages do not get crawled (Search Console, 2026-09-24)."""
+    paths = page.get("related") or []
+    if not paths:
+        return ""
+    by_path = {q["path"]: q for q in PAGES}
+    cards = ""
+    for path in paths:
+        q = by_path.get(path)
+        if not q:
+            raise SystemExit(f"related: unknown path {path!r} on {page['path']}")
+        cards += f'<a href="/{path}"><strong>{escape(q["h1"])}</strong>{escape(q["description"])}</a>'
+    return f'<section class="related"><h2>Keep reading</h2><div class="cards">{cards}</div></section>'
+
+
 def faq_html(faqs):
     if not faqs:
         return ""
@@ -670,6 +694,7 @@ def render(page, crumbs, body_html, answer_html=""):
   {answer_html}
   {body_html}
   {faq_html(page['faqs'])}
+  {related_html(page)}
   {cta()}
 </article>
 {footer()}
