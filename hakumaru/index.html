@@ -65,10 +65,14 @@
   .stat b { display: block; font-size: 28px; line-height: 1.05; color: #ffd479; letter-spacing: -.02em; }
   .stat span { font-size: 13px; color: #cfe0ff; }
   .pain { font-size: 19px; font-weight: 700; }
-  .ways { display: grid; gap: 8px; }
-  .way { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
-  .way i { font-style: normal; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; }
-  .way p { margin: 0; font-size: 15px; }
+  .ways { display: grid; gap: 12px; }
+  .way { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start;
+         background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.10);
+         border-radius: 12px; padding: 14px 16px; }
+  .slide:not(.dark) .way { background: #f6f8fc; border-color: #e3e8f0; }
+  .way i { font-style: normal; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; font-size: 22px; line-height: 1.15; }
+  .way p { margin: 0; font-size: 17px; line-height: 1.5; }
+  .way strong { font-size: 18px; display: block; margin-bottom: 2px; }
   @media (min-width: 820px) { .stats { grid-template-columns: repeat(4, 1fr); } .ways { grid-template-columns: 1fr 1fr; gap: 10px 26px; } }
   .bench { display: grid; gap: 10px; }
   .bar { background: #eef1f7; border-radius: 10px; overflow: hidden; height: 34px; position: relative; }
@@ -213,11 +217,14 @@
   <div class="inner">
     <p class="kicker">How you take control</p>
     <h2>Seven ways to bring them back, running without you.</h2>
-    <p class="muted" style="font-size:15px">Guests opt in at your counter. From there it runs on its own, and you can text the whole list any time you want.</p>
+    <p style="font-size:17px">Guests opt in at your counter. From there it runs on its own, and you can text the whole list any time you want.</p>
+    <div class="card" style="margin-bottom:14px">
+      <p style="margin:0"><strong>Every offer is yours to set.</strong> Dollar off, percent off, a free item, a course, a roll, a drink, members only. Nothing here is a fixed template. We write them together and change them whenever you want.</p>
+    </div>
     <div class="ways">
       <div class="way"><i>01</i><p><strong>Welcome offer.</strong> A reason to come back, sent the moment they join at the counter.</p></div>
       <div class="way"><i>02</i><p><strong>Bounce-back offers.</strong> Three hours after they join, then every 30 days for a year. A lunch guest gets pulled into dinner.</p></div>
-      <div class="way"><i>03</i><p><strong>Punch card rewards.</strong> A digital card that pays them for coming back.</p></div>
+      <div class="way"><i>03</i><p><strong>Repeat VIP Rewards.</strong> A digital rewards card that pays guests for coming back, and climbs as they do. No paper, nothing to lose in a wallet.</p></div>
       <div class="way"><i>04</i><p><strong>Birthday reward.</strong> A personal offer on every member's birthday.</p></div>
       <div class="way"><i>05</i><p><strong>Anniversary reward.</strong> An offer on the date they joined.</p></div>
       <div class="way"><i>06</i><p><strong>We miss you.</strong> Offers grow from 5% to 35% the longer a guest stays away.</p></div>
@@ -227,21 +234,25 @@
       <p style="margin:0 0 6px"><strong>What you do:</strong> let your servers mention it. That's it.</p>
       <p class="sub muted" style="margin:0">I install the kiosk and signage on site, train your staff, write the campaigns, and review the numbers with you every month. You own the guest list.</p>
     </div>
-    <a class="more" href="#cost">What it costs &darr;</a>
+    <a class="more" href="#more">But wait, there's more &darr;</a>
   </div>
 </section>
 
-<!-- 7. Cost vs return -->
-<section class="slide dark" id="cost">
+<!-- 7. Everything else that comes with it -->
+<section class="slide dark" id="more">
   <div class="inner">
-    <p class="kicker">The investment</p>
-    <h2>A rounding error against what it returns.</h2>
-    <table>
-      <tr><td><strong>The plan I recommend for Hakumaru: Value</strong></td><td class="num"><strong>$299 / mo</strong></td></tr>
-      <tr><td>One-time setup, install and training</td><td class="num">$1,000</td></tr>
-      <tr><td>At the 30% network average, returning once more</td><td class="num">$720,000 / yr</td></tr>
-    </table>
-    <p class="note" style="margin-top:8px">Value is the done-for-you tier: the kiosk, the full signage package, your campaigns written and scheduled, staff training and monthly reporting. The $1,000 setup covers the install, the signage and training your team on site.</p>
+    <p class="kicker">And that is only the texting</p>
+    <h2>But wait, there's more.</h2>
+    <p style="font-size:17px">The campaigns are the engine. This is everything that comes with them, and it is the part most people do not know about until we are sitting down.</p>
+    <div class="ways">
+      <div class="way"><i>&#9632;</i><p><strong>Your own dashboard.</strong> Who joined, who came back, what each campaign brought in. You can see the program working instead of taking my word for it.</p></div>
+      <div class="way"><i>&#9632;</i><p><strong>A monthly sit-down with me.</strong> Every month we read the numbers together and change what is not working. Getting you past the 30% average is the job, and it does not end at install.</p></div>
+      <div class="way"><i>&#9632;</i><p><strong>The full install, done on site.</strong> I bring the check-in kiosk, set it up at your counter, and train your team myself. You are not handed a login and left alone.</p></div>
+      <div class="way"><i>&#9632;</i><p><strong>The complete signage package.</strong> Counter signage, table pieces and window decals, so guests know to join without a server having to explain it.</p></div>
+      <div class="way"><i>&#9632;</i><p><strong>Campaigns written for you.</strong> I write and schedule them. Nothing to log into, nothing to remember.</p></div>
+      <div class="way"><i>&#9632;</i><p><strong>Carrier registration handled.</strong> The compliance paperwork that lets a business text legally is done for you.</p></div>
+      <div class="way"><i>&#9632;</i><p><strong>You own the list.</strong> Every guest who opts in is yours, and it stays yours.</p></div>
+    </div>
     <div class="card">
       <p style="margin:0 0 4px"><strong>The 3x ROI Guarantee.</strong></p>
       <p class="sub" style="margin:0">If the program does not return at least three times what you put into it in the first 12 months, we keep working for free until it does. <a href="https://www.smbaipartners.com/terms.html" target="_blank" rel="noopener" style="color:#ffd479">Terms apply.</a></p>
