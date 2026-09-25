@@ -34,6 +34,9 @@ export default {
       if (path === "/mainstream" || path === "/mainstream/") {
         return await servePage(request, env, ctx, url, { assetPath: "/mainstream/", source: url.searchParams.get("src") || "mainstream" });
       }
+      if (path === "/hakumaru" || path === "/hakumaru/") {
+        return await servePage(request, env, ctx, url, { assetPath: "/hakumaru/", source: url.searchParams.get("src") || "hakumaru" });
+      }
       if (path === "/offer" || path === "/offer/") {
         return await servePage(request, env, ctx, url, { assetPath: "/offer/", source: url.searchParams.get("src") || "offer" });
       }
